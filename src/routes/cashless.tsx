@@ -31,9 +31,7 @@ const DOCS = [
   "Policy copy (helpful for planned procedures)",
 ];
 
-export default function CashlessPage() { return null; }
-
-function CashlessPageInner() {
+function CashlessPage() {
   return (
     <div>
       <PageHero
@@ -108,7 +106,3 @@ function CashlessPageInner() {
     </div>
   );
 }
-
-// hack so default export not used; tanstack uses Route component
-Route.options.component = CashlessPageInner;
-function CashlessPage() { return <CashlessPageInner />; }
