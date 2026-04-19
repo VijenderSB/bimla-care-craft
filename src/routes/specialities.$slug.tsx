@@ -80,7 +80,7 @@ function SpecialityPage() {
           <div className="space-y-10">
             <Block title="Conditions we treat">
               <ul className="grid gap-2 sm:grid-cols-2">
-                {s.conditions.map((c) => (
+                {s.conditions.map((c: string) => (
                   <li key={c} className="flex items-start gap-2 text-foreground">
                     <CheckCircle2 className="mt-0.5 h-5 w-5 shrink-0 text-primary" /> {c}
                   </li>
@@ -89,7 +89,7 @@ function SpecialityPage() {
             </Block>
             <Block title="Treatments offered">
               <ul className="grid gap-2 sm:grid-cols-2">
-                {s.treatments.map((t) => (
+                {s.treatments.map((t: string) => (
                   <li key={t} className="flex items-start gap-2 text-foreground">
                     <CheckCircle2 className="mt-0.5 h-5 w-5 shrink-0 text-success" /> {t}
                   </li>

@@ -92,7 +92,7 @@ function DoctorPage() {
             </Block>
             <Block icon={Stethoscope} title="Treatments handled">
               <ul className="grid gap-2 sm:grid-cols-2">
-                {doctor.treatments.map((t) => (
+                {doctor.treatments.map((t: string) => (
                   <li key={t} className="flex items-start gap-2 text-foreground">
                     <span className="mt-1 h-1.5 w-1.5 shrink-0 rounded-full bg-primary" />
                     {t}
