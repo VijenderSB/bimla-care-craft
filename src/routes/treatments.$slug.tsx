@@ -15,7 +15,7 @@ import {
   ArrowRight,
 } from "lucide-react";
 import { PageHero } from "@/components/PageHero";
-import { TREATMENTS, SPECIALITIES, SITE } from "@/lib/site";
+import { TREATMENTS, SPECIALITIES, SITE, type Treatment } from "@/lib/site";
 
 export const Route = createFileRoute("/treatments/$slug")({
   loader: ({ params }) => {
@@ -86,7 +86,7 @@ function TreatmentPage() {
             {t.whoNeedsIt && t.whoNeedsIt.length > 0 && (
               <Block title="Who needs this treatment" icon={ListChecks}>
                 <ul className="grid gap-2 sm:grid-cols-2">
-                  {t.whoNeedsIt.map((w) => (
+                  {t.whoNeedsIt.map((w: string) => (
                     <li key={w} className="flex items-start gap-2 text-sm text-foreground">
                       <CheckCircle2 className="mt-0.5 h-4 w-4 shrink-0 text-primary" /> {w}
                     </li>
@@ -98,7 +98,7 @@ function TreatmentPage() {
             {t.procedure && t.procedure.length > 0 && (
               <Block title="What happens during the procedure" icon={Stethoscope}>
                 <ol className="space-y-3">
-                  {t.procedure.map((step, i) => (
+                  {t.procedure.map((step: string, i: number) => (
                     <li key={step} className="flex items-start gap-3">
                       <span className="mt-0.5 grid h-6 w-6 shrink-0 place-items-center rounded-full bg-primary text-xs font-bold text-primary-foreground">
                         {i + 1}
@@ -113,7 +113,7 @@ function TreatmentPage() {
             {t.preparation && t.preparation.length > 0 && (
               <Block title="How to prepare" icon={ClipboardList}>
                 <ul className="grid gap-2 sm:grid-cols-2">
-                  {t.preparation.map((p) => (
+                  {t.preparation.map((p: string) => (
                     <li
                       key={p}
                       className="flex items-start gap-2 rounded-xl border border-border bg-card p-3 text-sm text-foreground"
@@ -127,7 +127,7 @@ function TreatmentPage() {
 
             <Block title="Benefits at Bimla Devi Hospital">
               <ul className="grid gap-3 sm:grid-cols-2">
-                {t.benefits.map((b) => (
+                {t.benefits.map((b: string) => (
                   <li
                     key={b}
                     className="flex items-start gap-2 rounded-xl border border-border bg-card p-3 text-sm text-foreground"
@@ -141,7 +141,7 @@ function TreatmentPage() {
             {t.recoveryTimeline && t.recoveryTimeline.length > 0 && (
               <Block title="Recovery timeline" icon={Clock}>
                 <ol className="relative space-y-4 border-l-2 border-primary/30 pl-5">
-                  {t.recoveryTimeline.map((r) => (
+                  {t.recoveryTimeline.map((r: { time: string; milestone: string }) => (
                     <li key={r.time} className="relative">
                       <span className="absolute -left-[27px] top-1 grid h-4 w-4 place-items-center rounded-full bg-primary ring-4 ring-background" />
                       <p className="text-xs font-semibold uppercase tracking-wider text-primary">
@@ -162,7 +162,7 @@ function TreatmentPage() {
                   honestly during your pre-procedure consultation.
                 </p>
                 <ul className="grid gap-2 sm:grid-cols-2">
-                  {t.risks.map((r) => (
+                  {t.risks.map((r: string) => (
                     <li
                       key={r}
                       className="flex items-start gap-2 rounded-xl border border-border bg-card p-3 text-sm text-foreground"
@@ -190,7 +190,7 @@ function TreatmentPage() {
             {t.faqs && t.faqs.length > 0 && (
               <Block title="Frequently asked questions" icon={HelpCircle}>
                 <div className="space-y-3">
-                  {t.faqs.map((f) => (
+                  {t.faqs.map((f: { q: string; a: string }) => (
                     <details
                       key={f.q}
                       className="group rounded-xl border border-border bg-card p-4 open:shadow-soft"
@@ -230,7 +230,7 @@ function TreatmentPage() {
             {related.length > 0 && (
               <Block title="Related treatments">
                 <div className="grid gap-4 sm:grid-cols-2">
-                  {related.map((r) => (
+                  {related.map((r: Treatment) => (
                     <Link
                       key={r.slug}
                       to="/treatments/$slug"
