@@ -244,13 +244,33 @@ export type Treatment = {
   benefits: string[];
   recovery: string;
   speciality: string;
+  /** Conditions / symptoms that indicate this treatment */
+  whoNeedsIt?: string[];
+  /** Step-by-step what happens at the hospital */
+  procedure?: string[];
+  /** What the patient should do before the procedure */
+  preparation?: string[];
+  /** Recovery milestones over time */
+  recoveryTimeline?: { time: string; milestone: string }[];
+  /** Realistic risks discussed for informed consent */
+  risks?: string[];
+  /** Approximate hospital stay */
+  stay?: string;
+  /** Type of anaesthesia */
+  anaesthesia?: string;
+  /** Approximate duration of the procedure */
+  duration?: string;
+  /** Indicative starting price band — for reference only */
+  costFrom?: string;
+  /** Frequently asked questions specific to this treatment */
+  faqs?: { q: string; a: string }[];
 };
 
 export const TREATMENTS: Treatment[] = [
   {
     slug: "normal-delivery",
     name: "Normal Delivery & Painless Birth",
-    short: "Safe, supported, mother-first childbirth.",
+    short: "Safe, supported, mother-first childbirth with optional painless (epidural) labour.",
     body:
       "Our maternity team supports you through a safe normal delivery with optional epidural (painless) labour, continuous foetal monitoring and a clean, comfortable labour room. C-section is performed only when medically indicated — your safety and your baby's wellbeing always come first.",
     benefits: [
@@ -258,6 +278,43 @@ export const TREATMENTS: Treatment[] = [
       "Painless (epidural) option available",
       "Skin-to-skin and breastfeeding support",
       "Newborn nursery & paediatrician on standby",
+      "Private & semi-private labour rooms",
+      "Cashless mediclaim accepted",
+    ],
+    whoNeedsIt: [
+      "Expectant mothers with uncomplicated pregnancy",
+      "Mothers preferring a low-intervention birth",
+      "Patients seeking painless (epidural) childbirth",
+    ],
+    procedure: [
+      "Admission, baseline vitals and CTG monitoring",
+      "Continuous labour support by trained nurses",
+      "Optional epidural by senior anaesthesia team",
+      "Assisted vaginal delivery in modern labour room",
+      "Immediate skin-to-skin contact and breastfeeding initiation",
+      "Newborn check by paediatrician within first hour",
+    ],
+    preparation: [
+      "Complete antenatal check-ups & scans on schedule",
+      "Carry pregnancy file, ID and insurance card",
+      "Pack a maternity bag from week 36",
+      "Light meal allowed in early labour",
+    ],
+    recoveryTimeline: [
+      { time: "Day 0", milestone: "Delivery, observation, breastfeeding initiation" },
+      { time: "Day 1–2", milestone: "Mobilisation, lactation guidance, discharge" },
+      { time: "Week 1", milestone: "First postnatal review & newborn check" },
+      { time: "Week 6", milestone: "Postnatal review, contraception counselling" },
+    ],
+    risks: ["Need for emergency C-section", "Postpartum bleeding", "Perineal tear"],
+    stay: "1–2 days",
+    anaesthesia: "Optional epidural",
+    duration: "Variable (labour-dependent)",
+    costFrom: "Affordable packages available — call for estimate",
+    faqs: [
+      { q: "Is painless delivery safe?", a: "Yes. Epidural analgesia is administered by our senior anaesthesia team and is a globally accepted, safe option for labour pain relief." },
+      { q: "Will my husband be allowed inside?", a: "One birth partner is permitted in the labour room subject to clinical and infection-control conditions." },
+      { q: "Do you accept cashless maternity?", a: "Yes — most insurers cover maternity after a waiting period. We verify and process cashless approval for you." },
     ],
     recovery: "Usually 1–2 days hospital stay; complete recovery in 2–4 weeks.",
     speciality: "gynaecology-obstetrics",
@@ -265,7 +322,7 @@ export const TREATMENTS: Treatment[] = [
   {
     slug: "c-section",
     name: "Caesarean Section (LSCS)",
-    short: "Planned and emergency C-sections, safely.",
+    short: "Planned and emergency C-sections in a modern modular OT.",
     body:
       "When a C-section is the safer choice, our experienced obstetric and anaesthesia team performs it in a sterile, modern OT — with mother-friendly techniques, gentle handling of the baby and structured pain management for a smooth recovery.",
     benefits: [
@@ -273,29 +330,294 @@ export const TREATMENTS: Treatment[] = [
       "Senior anaesthesia team",
       "Cashless insurance accepted",
       "Lactation support after surgery",
+      "Single-room recovery options",
+    ],
+    whoNeedsIt: [
+      "Previous C-section (with recurrent indication)",
+      "Breech / transverse presentation",
+      "Foetal distress or failure to progress",
+      "Placenta praevia & high-risk pregnancy",
+    ],
+    procedure: [
+      "Pre-op consultation & anaesthesia assessment",
+      "Spinal / epidural anaesthesia in OT",
+      "Lower-segment caesarean section",
+      "Baby handed to paediatrician for newborn care",
+      "Mother shifted to recovery & then private room",
+    ],
+    preparation: [
+      "6 hours fasting before planned surgery",
+      "Pre-op blood work & cross-match",
+      "Bath & remove jewellery, nail polish",
+      "Arrange caregiver for first 48 hours",
+    ],
+    recoveryTimeline: [
+      { time: "Day 0", milestone: "Surgery, observation, breastfeeding support" },
+      { time: "Day 1", milestone: "Mobilisation with help, oral fluids & diet" },
+      { time: "Day 3–4", milestone: "Discharge with wound care plan" },
+      { time: "Week 2", milestone: "Suture review, light activity" },
+      { time: "Week 6", milestone: "Postnatal review, normal activity resumed" },
+    ],
+    risks: ["Wound infection", "Bleeding", "Anaesthetic reactions", "DVT"],
+    stay: "3–4 days",
+    anaesthesia: "Spinal / epidural",
+    duration: "45–60 minutes",
+    costFrom: "Cashless packages — call for tailored estimate",
+    faqs: [
+      { q: "Can I breastfeed immediately after C-section?", a: "Yes. We support breastfeeding within the first hour wherever clinically possible." },
+      { q: "How soon can I walk after C-section?", a: "Most mothers walk with assistance within 12–24 hours, which speeds up recovery." },
     ],
     recovery: "Hospital stay of 3–4 days; light activity in 1–2 weeks; full recovery 6 weeks.",
     speciality: "gynaecology-obstetrics",
   },
   {
-    slug: "laparoscopic-surgery",
-    name: "Laparoscopic (Keyhole) Surgery",
-    short: "Smaller cuts, less pain, faster recovery.",
+    slug: "laparoscopic-hysterectomy",
+    name: "Laparoscopic Hysterectomy",
+    short: "Keyhole removal of the uterus for fibroids, prolapse or heavy bleeding.",
     body:
-      "Laparoscopic surgery uses tiny incisions and a high-definition camera so you go home faster, with less pain and smaller scars. We offer it for gallstones, hernia, appendicitis and selected gynaecological conditions.",
+      "Laparoscopic hysterectomy uses small abdominal incisions and a high-definition camera to remove the uterus with minimal blood loss, smaller scars and a much faster return to normal life compared with open surgery.",
     benefits: [
-      "Hospital stay often just 1–2 days",
-      "Reduced post-op pain",
-      "Quicker return to work",
-      "Lower risk of wound infection",
+      "Tiny incisions & minimal scarring",
+      "Less blood loss & lower infection risk",
+      "Hospital stay of just 2–3 days",
+      "Faster return to normal activity",
     ],
-    recovery: "Most patients return to normal activity in 1–2 weeks.",
+    whoNeedsIt: [
+      "Symptomatic fibroids unresponsive to medication",
+      "Adenomyosis with heavy painful periods",
+      "Uterine prolapse",
+      "Pre-cancerous endometrial conditions",
+    ],
+    procedure: [
+      "Pre-op evaluation, scans & anaesthesia review",
+      "General anaesthesia in modular OT",
+      "3–4 small (5–10mm) abdominal incisions",
+      "Uterus removed via laparoscope",
+      "Closure with absorbable sutures",
+    ],
+    preparation: [
+      "Stop blood-thinners as advised (5–7 days prior)",
+      "Overnight fasting before surgery",
+      "Pre-op investigations & physician fitness",
+    ],
+    recoveryTimeline: [
+      { time: "Day 1", milestone: "Mobilisation, light diet" },
+      { time: "Day 2–3", milestone: "Discharge with pain control" },
+      { time: "Week 2", milestone: "Resume desk work" },
+      { time: "Week 6", milestone: "Resume exercise, lifting & travel" },
+    ],
+    risks: ["Bleeding", "Bladder / ureter injury (rare)", "Conversion to open surgery"],
+    stay: "2–3 days",
+    anaesthesia: "General",
+    duration: "1.5–2.5 hours",
+    costFrom: "Insurance covered — request a written estimate",
+    faqs: [
+      { q: "Will I go into menopause after hysterectomy?", a: "Only if the ovaries are also removed. We preserve ovaries wherever clinically appropriate." },
+    ],
+    recovery: "Most patients return to normal activity in 3–4 weeks.",
+    speciality: "gynaecology-obstetrics",
+  },
+  {
+    slug: "high-risk-pregnancy",
+    name: "High-Risk Pregnancy Care",
+    short: "Specialised antenatal care for diabetes, BP, twins & previous loss.",
+    body:
+      "A structured high-risk pregnancy programme combining senior obstetricians, dedicated foetal monitoring and on-call paediatrics & ICU back-up — giving expectant mothers and families confidence at every stage.",
+    benefits: [
+      "Senior obstetrician-led care plan",
+      "Detailed foetal monitoring & growth scans",
+      "Diabetes & BP co-management",
+      "On-site neonatal back-up at delivery",
+    ],
+    whoNeedsIt: [
+      "Gestational or pre-existing diabetes",
+      "Hypertension or pre-eclampsia",
+      "Twin / multiple pregnancy",
+      "Previous miscarriage or preterm birth",
+      "Mothers above 35 years",
+    ],
+    procedure: [
+      "Detailed booking visit & risk assessment",
+      "Customised antenatal schedule",
+      "Serial growth and Doppler scans",
+      "Planned delivery with multidisciplinary team",
+    ],
+    preparation: [
+      "Maintain antenatal visit schedule",
+      "Daily glucose / BP monitoring as advised",
+      "Iron, calcium & folic acid as prescribed",
+    ],
+    stay: "As per delivery plan",
+    anaesthesia: "Per delivery method",
+    duration: "Programme across pregnancy",
+    faqs: [
+      { q: "Can I still aim for normal delivery?", a: "Often yes — many high-risk mothers deliver vaginally with the right monitoring. Mode of delivery is decided based on real-time clinical findings." },
+    ],
+    recovery: "Delivery-specific. Postnatal review at 1 and 6 weeks.",
+    speciality: "gynaecology-obstetrics",
+  },
+  {
+    slug: "laparoscopic-cholecystectomy",
+    name: "Laparoscopic Gallbladder Surgery (Cholecystectomy)",
+    short: "Day-care keyhole removal of a stone-bearing gallbladder.",
+    body:
+      "The most modern way to treat gallstones — four tiny incisions, a high-definition camera and a hospital stay of just one to two days. Most patients return to office work within a week.",
+    benefits: [
+      "Day-care / next-day discharge",
+      "Tiny scars (5–10mm)",
+      "Minimal post-op pain",
+      "Cashless insurance accepted",
+    ],
+    whoNeedsIt: [
+      "Symptomatic gallstones",
+      "Recurrent biliary colic",
+      "Acute or chronic cholecystitis",
+      "Gallbladder polyps > 1cm",
+    ],
+    procedure: [
+      "Pre-op assessment & ultrasound review",
+      "General anaesthesia in modular OT",
+      "4 small incisions, gallbladder removed laparoscopically",
+      "Skin closed with absorbable sutures or glue",
+    ],
+    preparation: [
+      "Overnight fasting (8 hours)",
+      "Stop blood-thinners as advised",
+      "Pre-op blood work, ECG & physician fitness",
+    ],
+    recoveryTimeline: [
+      { time: "Day 0", milestone: "Surgery, oral sips after 4–6 hrs" },
+      { time: "Day 1", milestone: "Discharge with diet plan" },
+      { time: "Week 1", milestone: "Return to office work" },
+      { time: "Week 4", milestone: "Resume gym & heavy lifting" },
+    ],
+    risks: ["Bile leak (rare)", "Wound infection", "Conversion to open surgery"],
+    stay: "1–2 days",
+    anaesthesia: "General",
+    duration: "45–75 minutes",
+    costFrom: "Cashless packages from leading TPAs",
+    faqs: [
+      { q: "Will I have to follow a strict diet for life?", a: "No. Most patients return to a normal diet within a few weeks; only initial low-fat caution is advised." },
+    ],
+    recovery: "Office work in 7 days; full activity in 3–4 weeks.",
+    speciality: "general-surgery",
+  },
+  {
+    slug: "hernia-repair",
+    name: "Laparoscopic Hernia Repair",
+    short: "Mesh repair for inguinal, umbilical & incisional hernia.",
+    body:
+      "Modern hernia repair using laparoscopic techniques and a strong mesh — giving you a lower chance of recurrence and a much faster return to daily life than the traditional open approach.",
+    benefits: [
+      "Smaller scars, less pain",
+      "Lower recurrence with mesh",
+      "Discharge in 1–2 days",
+      "Bilateral repair in single sitting",
+    ],
+    whoNeedsIt: [
+      "Inguinal (groin) hernia",
+      "Umbilical hernia",
+      "Incisional hernia after past surgery",
+    ],
+    procedure: [
+      "Pre-op evaluation & anaesthesia review",
+      "General anaesthesia, 3 small incisions",
+      "Hernia content reduced; mesh placed and fixed",
+      "Wound closure with absorbable sutures",
+    ],
+    preparation: [
+      "Overnight fasting",
+      "Stop blood-thinners as advised",
+      "Pre-op investigations",
+    ],
+    recoveryTimeline: [
+      { time: "Day 1", milestone: "Mobilisation & discharge" },
+      { time: "Week 1", milestone: "Light desk work" },
+      { time: "Week 4–6", milestone: "Resume heavy lifting & gym" },
+    ],
+    risks: ["Seroma", "Wound infection", "Recurrence (low with mesh)"],
+    stay: "1–2 days",
+    anaesthesia: "General",
+    duration: "60–90 minutes",
+    recovery: "Office in 1 week; full activity in 4–6 weeks.",
+    speciality: "general-surgery",
+  },
+  {
+    slug: "appendectomy",
+    name: "Laparoscopic Appendix Surgery",
+    short: "Emergency keyhole removal of an inflamed appendix.",
+    body:
+      "Acute appendicitis is a common surgical emergency. Our team performs laparoscopic appendectomy round the clock — a faster recovery, less pain and just three tiny scars.",
+    benefits: [
+      "24×7 emergency surgical team",
+      "Tiny scars",
+      "Discharge within 2 days",
+      "Cashless emergency admission",
+    ],
+    whoNeedsIt: [
+      "Acute appendicitis (severe right lower abdomen pain)",
+      "Recurrent appendicular pain",
+    ],
+    procedure: [
+      "Emergency assessment, scan & blood work",
+      "Surgery within hours of admission",
+      "3 small incisions, appendix removed laparoscopically",
+    ],
+    preparation: ["Emergency — fasting from time of diagnosis"],
+    recoveryTimeline: [
+      { time: "Day 1", milestone: "Light diet, mobilisation" },
+      { time: "Day 2", milestone: "Discharge" },
+      { time: "Week 2", milestone: "Resume normal routine" },
+    ],
+    risks: ["Wound infection", "Intra-abdominal collection (rare)"],
+    stay: "1–2 days",
+    anaesthesia: "General",
+    duration: "30–60 minutes",
+    recovery: "Most patients fully recover in 2 weeks.",
+    speciality: "general-surgery",
+  },
+  {
+    slug: "piles-fissure-fistula",
+    name: "Piles, Fissure & Fistula Surgery",
+    short: "Modern stapler & laser options for ano-rectal problems.",
+    body:
+      "Painless modern treatment for piles, anal fissure and fistula — with options including laser, stapler haemorrhoidopexy and conventional surgery, chosen based on your grade and lifestyle.",
+    benefits: [
+      "Day-care / short-stay procedures",
+      "Less post-op pain",
+      "Quick return to work",
+      "Discreet, dignified care",
+    ],
+    whoNeedsIt: [
+      "Bleeding or prolapsing piles",
+      "Chronic anal fissure",
+      "Anal fistula / abscess",
+    ],
+    procedure: [
+      "Per-rectal exam & proctoscopy in OPD",
+      "Day-care surgery under spinal / short GA",
+      "Stapler, laser or conventional excision",
+    ],
+    preparation: [
+      "Overnight fasting",
+      "Bowel prep as advised",
+    ],
+    recoveryTimeline: [
+      { time: "Day 0", milestone: "Surgery & same-day / next-day discharge" },
+      { time: "Week 1", milestone: "Sitz baths, soft diet, return to office" },
+      { time: "Week 4", milestone: "Full recovery" },
+    ],
+    risks: ["Mild bleeding", "Recurrence (low)"],
+    stay: "Day-care to 1 day",
+    anaesthesia: "Spinal or short GA",
+    duration: "30–45 minutes",
+    recovery: "Back to work in 3–7 days.",
     speciality: "general-surgery",
   },
   {
     slug: "fracture-treatment",
     name: "Fracture & Trauma Care",
-    short: "Casting, surgical fixation and rehabilitation.",
+    short: "Casting, surgical fixation and rehabilitation under one roof.",
     body:
       "From simple fractures needing a cast to complex trauma requiring plate-and-screw fixation, our orthopaedic team delivers prompt diagnosis (in-house X-ray), surgical care and structured physiotherapy under one roof.",
     benefits: [
@@ -304,22 +626,88 @@ export const TREATMENTS: Treatment[] = [
       "Physiotherapy from day one",
       "Cashless mediclaim accepted",
     ],
-    recovery: "Varies by fracture; typically 4–12 weeks with guided rehab.",
+    whoNeedsIt: [
+      "Bone fractures from fall / accident",
+      "Sports injuries",
+      "Crush & poly-trauma",
+    ],
+    procedure: [
+      "Emergency triage & X-ray",
+      "Casting / closed reduction OR surgical fixation",
+      "Pain management and early mobilisation",
+      "Structured physiotherapy plan",
+    ],
+    preparation: ["Emergency — fasting if surgery likely"],
+    recoveryTimeline: [
+      { time: "Week 1–2", milestone: "Pain control, wound care" },
+      { time: "Week 4–6", milestone: "Partial weight-bearing / mobility" },
+      { time: "Week 8–12", milestone: "Return to full activity (case-dependent)" },
+    ],
+    risks: ["Implant-related discomfort", "Delayed union (uncommon)", "Infection (rare)"],
+    stay: "1–5 days based on fracture",
+    anaesthesia: "Regional / general (if surgery)",
+    duration: "Varies",
+    recovery: "Typically 4–12 weeks with guided rehab.",
+    speciality: "orthopaedics",
+  },
+  {
+    slug: "joint-pain-arthritis",
+    name: "Joint Pain & Arthritis Care",
+    short: "Knee, shoulder & back pain — non-surgical and surgical options.",
+    body:
+      "From physiotherapy and joint injections to advanced surgical referral when needed, we offer a stepwise plan for arthritis and chronic joint pain — focused on getting you moving comfortably again.",
+    benefits: [
+      "Senior orthopaedic consultation",
+      "In-house physiotherapy",
+      "Image-guided joint injections",
+      "Lifestyle & weight guidance",
+    ],
+    whoNeedsIt: [
+      "Knee osteoarthritis",
+      "Frozen shoulder",
+      "Chronic back pain",
+      "Sports overuse injuries",
+    ],
+    procedure: [
+      "Clinical examination & X-ray",
+      "Conservative care: medication, physio, lifestyle",
+      "Joint injection if indicated",
+      "Surgical referral for advanced cases",
+    ],
+    stay: "OPD-based",
+    anaesthesia: "Local (for injections)",
+    duration: "OPD visit",
+    recovery: "Symptom relief over 2–6 weeks of structured care.",
     speciality: "orthopaedics",
   },
   {
     slug: "icu-critical-care",
     name: "ICU & Critical Care",
-    short: "Round-the-clock intensive monitoring & support.",
+    short: "24×7 intensivist-led intensive care with ventilator support.",
     body:
       "Our intensive care unit is staffed 24×7 with trained intensivists and nurses, equipped with multi-para monitors, ventilators and emergency response protocols for medical and post-surgical critical care.",
     benefits: [
       "24×7 intensivist cover",
       "Ventilator & monitoring support",
       "Infection-controlled environment",
-      "Family counselling daily",
+      "Daily family counselling",
     ],
-    recovery: "Stay depends on condition; structured step-down to ward when stable.",
+    whoNeedsIt: [
+      "Severe infections / sepsis",
+      "Respiratory failure",
+      "Post-major-surgery monitoring",
+      "Cardiac & neuro emergencies",
+    ],
+    procedure: [
+      "Continuous monitoring of all vitals",
+      "Ventilator / oxygen support as needed",
+      "IV medication, nutrition & infection control",
+      "Structured step-down to ward when stable",
+    ],
+    stay: "Condition-dependent",
+    anaesthesia: "N/A",
+    duration: "Continuous care",
+    recovery: "Step-down to ward when stable; total stay varies.",
     speciality: "general-medicine",
   },
   {
@@ -334,8 +722,332 @@ export const TREATMENTS: Treatment[] = [
       "Direct ICU / OT escalation",
       "Cashless emergency admission",
     ],
+    whoNeedsIt: [
+      "Chest pain, breathlessness",
+      "Accident & trauma",
+      "Stroke symptoms",
+      "Severe abdominal pain",
+      "High fever with confusion",
+    ],
+    procedure: [
+      "Rapid doctor-led triage",
+      "Stabilisation: oxygen, IV access, monitoring",
+      "Investigations: ECG, X-ray, blood work",
+      "Admission to ICU / ward or surgery as required",
+    ],
+    stay: "Stabilisation, then admission or discharge",
+    anaesthesia: "If surgery required",
+    duration: "Immediate response 24×7",
+    faqs: [
+      { q: "Should I call before coming for an emergency?", a: "If possible yes, so our team is ready — but never delay. Walk into the ER directly at any hour." },
+    ],
     recovery: "Stabilisation first, then admission or discharge as appropriate.",
     speciality: "general-medicine",
+  },
+  {
+    slug: "fess-sinus-surgery",
+    name: "FESS — Sinus Surgery",
+    short: "Endoscopic surgery for chronic sinusitis & nasal block.",
+    body:
+      "Functional Endoscopic Sinus Surgery (FESS) clears blocked sinuses through the nostril — no external cuts. It gives long-term relief for chronic sinusitis, polyps and recurrent infection.",
+    benefits: [
+      "No external scar",
+      "Day-care / overnight stay",
+      "Long-term symptom relief",
+    ],
+    whoNeedsIt: [
+      "Chronic sinusitis not responding to medication",
+      "Nasal polyps",
+      "Recurrent sinus infection",
+    ],
+    procedure: [
+      "Pre-op CT scan of sinuses",
+      "General anaesthesia, endoscopic clearance via nostril",
+      "Nasal pack for 24 hours",
+    ],
+    preparation: ["Overnight fasting", "Stop blood-thinners as advised"],
+    stay: "1 day",
+    anaesthesia: "General",
+    duration: "60–90 minutes",
+    recovery: "Office in 1 week; full healing in 4–6 weeks.",
+    speciality: "ent",
+  },
+  {
+    slug: "tonsillectomy",
+    name: "Tonsillectomy / Adenoidectomy",
+    short: "Removal of recurrently inflamed tonsils & adenoids.",
+    body:
+      "Recommended for children and adults with repeated tonsillitis, sleep-disordered breathing or snoring. We perform it as a short, day-care procedure with modern coblation / cautery techniques.",
+    benefits: [
+      "Short day-care procedure",
+      "Modern coblation option",
+      "Excellent long-term results",
+    ],
+    whoNeedsIt: [
+      "Recurrent tonsillitis (>5 episodes/year)",
+      "Sleep apnoea / mouth breathing in children",
+      "Snoring with adenoid hypertrophy",
+    ],
+    procedure: [
+      "Pre-op physician fitness",
+      "General anaesthesia, oral approach",
+      "Tonsils / adenoids removed; haemostasis ensured",
+    ],
+    preparation: ["6 hours fasting"],
+    stay: "Day-care to 1 day",
+    anaesthesia: "General",
+    duration: "30–45 minutes",
+    recovery: "Soft diet for 7–10 days; back to school/office in 1 week.",
+    speciality: "ent",
+  },
+  {
+    slug: "dental-implants",
+    name: "Dental Implants & Smile Restoration",
+    short: "Permanent replacement for missing teeth.",
+    body:
+      "A titanium implant integrated with the jawbone supports a natural-looking crown — restoring chewing, speech and confidence without disturbing neighbouring teeth.",
+    benefits: [
+      "Long-term, fixed solution",
+      "Looks & feels natural",
+      "Preserves adjacent teeth",
+    ],
+    whoNeedsIt: [
+      "One or more missing teeth",
+      "Difficulty chewing on dentures",
+      "Aesthetic concerns",
+    ],
+    procedure: [
+      "OPG / CBCT imaging & treatment plan",
+      "Implant placement under local anaesthesia",
+      "Healing period of 3–6 months",
+      "Crown placement on osseointegrated implant",
+    ],
+    stay: "OPD",
+    anaesthesia: "Local",
+    duration: "60–90 minutes per implant",
+    recovery: "Soft diet for 1 week; final crown after osseointegration.",
+    speciality: "dental",
+  },
+  {
+    slug: "root-canal",
+    name: "Root Canal Treatment (RCT)",
+    short: "Save a decayed or infected tooth — painlessly.",
+    body:
+      "Single or multi-sitting root canal treatment for deep cavities and dental infections — preserving your natural tooth and ending the pain.",
+    benefits: [
+      "Saves the natural tooth",
+      "Painless under modern anaesthesia",
+      "Single-sitting option for many cases",
+    ],
+    whoNeedsIt: [
+      "Severe toothache",
+      "Deep cavity / abscess",
+      "Cracked tooth with pulp exposure",
+    ],
+    procedure: [
+      "Diagnosis & X-ray",
+      "Cleaning & shaping of root canals",
+      "Filling and crown placement",
+    ],
+    stay: "OPD",
+    anaesthesia: "Local",
+    duration: "45–90 minutes",
+    recovery: "Immediate; crown advised within 2 weeks.",
+    speciality: "dental",
+  },
+  {
+    slug: "kidney-stone-urs",
+    name: "Kidney & Ureteric Stone Removal (URS / RIRS)",
+    short: "Stone-free in a day — without external cuts.",
+    body:
+      "Endoscopic stone removal using ureteroscopy (URS) or retrograde intrarenal surgery (RIRS) with laser fragmentation — a scarless, highly effective approach for ureteric and small kidney stones.",
+    benefits: [
+      "No external incision",
+      "Stone-free in single sitting (most cases)",
+      "Short hospital stay",
+    ],
+    whoNeedsIt: [
+      "Ureteric stones causing colic",
+      "Small to medium kidney stones",
+      "Stones obstructing urine flow",
+    ],
+    procedure: [
+      "Pre-op urine culture, scan & blood work",
+      "Spinal / general anaesthesia",
+      "Endoscopic laser fragmentation & stone removal",
+      "DJ stent placement, removed after 2 weeks",
+    ],
+    preparation: ["Treat any UTI before surgery", "Overnight fasting"],
+    stay: "1–2 days",
+    anaesthesia: "Spinal / general",
+    duration: "45–90 minutes",
+    recovery: "Office in 3–5 days; stent removal at 2 weeks.",
+    speciality: "urology",
+  },
+  {
+    slug: "turp-prostate",
+    name: "TURP — Prostate Surgery",
+    short: "Endoscopic relief for an enlarged prostate (BPH).",
+    body:
+      "Transurethral Resection of the Prostate (TURP) is the gold-standard endoscopic surgery for symptomatic prostate enlargement — restoring smooth urine flow without external cuts.",
+    benefits: [
+      "No external scar",
+      "Strong long-term symptom relief",
+      "Short hospital stay",
+    ],
+    whoNeedsIt: [
+      "Difficulty passing urine",
+      "Recurrent UTI due to BPH",
+      "Failed medical management of BPH",
+    ],
+    procedure: [
+      "Pre-op urine culture & cardiac fitness",
+      "Spinal anaesthesia, endoscopic resection",
+      "Catheter for 2–3 days post-op",
+    ],
+    stay: "2–3 days",
+    anaesthesia: "Spinal",
+    duration: "60–90 minutes",
+    recovery: "Office in 2 weeks; full activity in 4 weeks.",
+    speciality: "urology",
+  },
+  {
+    slug: "dialysis-ckd",
+    name: "Dialysis & CKD Care",
+    short: "Coordinated kidney care including dialysis support.",
+    body:
+      "Comprehensive chronic kidney disease (CKD) management with regular nephrology review, lab monitoring, diet counselling and coordinated access to maintenance haemodialysis.",
+    benefits: [
+      "Senior nephrology team",
+      "Coordinated dialysis scheduling",
+      "Renal nutrition counselling",
+    ],
+    whoNeedsIt: [
+      "Stage 4–5 chronic kidney disease",
+      "Acute kidney injury",
+      "Fluid overload / uraemic symptoms",
+    ],
+    procedure: [
+      "Detailed nephrology evaluation",
+      "Vascular access planning (fistula)",
+      "Maintenance haemodialysis sessions",
+      "Diet & medication optimisation",
+    ],
+    stay: "Outpatient sessions",
+    anaesthesia: "N/A",
+    duration: "4 hours per session, typically 2–3 times/week",
+    recovery: "Ongoing programme — quality of life focused.",
+    speciality: "nephrology",
+  },
+  {
+    slug: "newborn-care",
+    name: "Newborn & NICU-Ready Care",
+    short: "Paediatrician-led care from the very first breath.",
+    body:
+      "Every baby born at our hospital is examined by a paediatrician within the first hour and supported through breastfeeding, jaundice screening and immunisation. Sicker newborns are stabilised by our team with rapid escalation pathways.",
+    benefits: [
+      "Paediatrician at every delivery",
+      "Jaundice screening & phototherapy",
+      "Lactation support",
+      "Vaccination from birth",
+    ],
+    whoNeedsIt: [
+      "All newborns",
+      "Babies needing observation for jaundice / feeding",
+    ],
+    procedure: [
+      "First-hour newborn examination",
+      "Vitamin K, BCG, Hep-B, OPV birth doses",
+      "Breastfeeding & weight-gain monitoring",
+      "Discharge with growth chart & vaccine schedule",
+    ],
+    stay: "With mother",
+    anaesthesia: "N/A",
+    duration: "Continuous newborn care",
+    recovery: "First review at 1 week, then per vaccination schedule.",
+    speciality: "paediatrics",
+  },
+  {
+    slug: "child-vaccination",
+    name: "Child Vaccination (IAP Schedule)",
+    short: "Complete IAP-recommended immunisation in a child-friendly setting.",
+    body:
+      "We follow the Indian Academy of Paediatrics (IAP) immunisation schedule — with reminders, gentle administration and a calm, child-friendly clinic.",
+    benefits: [
+      "IAP-recommended schedule",
+      "Vaccine reminders",
+      "Child-friendly OPD",
+    ],
+    whoNeedsIt: [
+      "All children from birth to 18 years",
+    ],
+    procedure: [
+      "Growth & developmental check",
+      "Vaccine administration",
+      "Updated immunisation card",
+    ],
+    stay: "OPD",
+    anaesthesia: "N/A",
+    duration: "15–20 minutes",
+    recovery: "Mild fever / soreness for 24 hours possible.",
+    speciality: "paediatrics",
+  },
+  {
+    slug: "diabetes-bp-care",
+    name: "Diabetes & Hypertension Management",
+    short: "Long-term control with structured follow-up & lifestyle care.",
+    body:
+      "Personalised plans for diabetes and hypertension — combining medication, monitoring, dietary guidance and periodic complications screening (eye, kidney, heart).",
+    benefits: [
+      "Senior physician-led",
+      "Structured follow-up",
+      "Diet & lifestyle counselling",
+      "Linked specialist referrals",
+    ],
+    whoNeedsIt: [
+      "Type 1 / Type 2 diabetes",
+      "Hypertension",
+      "Metabolic syndrome",
+    ],
+    procedure: [
+      "Detailed medical evaluation & investigations",
+      "Customised medication & lifestyle plan",
+      "Periodic HbA1c, lipid, kidney & eye screening",
+    ],
+    stay: "OPD",
+    anaesthesia: "N/A",
+    duration: "Long-term programme",
+    recovery: "Ongoing — sustainable improvements over months.",
+    speciality: "general-medicine",
+  },
+  {
+    slug: "psychiatry-counselling",
+    name: "Psychiatric Care & Therapy",
+    short: "Confidential help for depression, anxiety, OCD & sleep.",
+    body:
+      "Evidence-based psychiatric and psychological care — from medication for depression and anxiety to CBT, family counselling and adolescent support, in a confidential and respectful setting.",
+    benefits: [
+      "Confidential consultation",
+      "Combined medicine + therapy",
+      "Family & adolescent support",
+    ],
+    whoNeedsIt: [
+      "Persistent low mood / anxiety",
+      "Sleep disturbance",
+      "OCD, panic attacks",
+      "Adolescent emotional concerns",
+    ],
+    procedure: [
+      "Detailed psychiatric assessment",
+      "Personalised treatment plan",
+      "CBT / counselling sessions",
+      "Periodic review",
+    ],
+    stay: "OPD",
+    anaesthesia: "N/A",
+    duration: "45–60 minutes per session",
+    recovery: "Improvement typically over 6–12 weeks of structured care.",
+    speciality: "psychiatry-psychology",
   },
 ];
 
