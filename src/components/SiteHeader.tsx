@@ -2,6 +2,7 @@ import { useState } from "react";
 import { Link } from "@tanstack/react-router";
 import { Phone, Menu, X, MessageCircle, Calendar } from "lucide-react";
 import { SITE } from "@/lib/site";
+import logo from "@/assets/logo-bdh.png";
 
 const NAV = [
   { to: "/", label: "Home" },
@@ -37,9 +38,13 @@ export function SiteHeader() {
 
       <div className="container-prose flex items-center justify-between py-3">
         <Link to="/" className="flex items-center gap-3" aria-label="Bimla Devi Hospital — Home">
-          <div className="grid h-11 w-11 place-items-center rounded-xl bg-primary text-primary-foreground font-display text-lg font-bold shadow-soft">
-            B
-          </div>
+          <img
+            src={logo}
+            alt="Bimla Devi Hospital logo"
+            className="h-12 w-auto md:h-14"
+            width={56}
+            height={56}
+          />
           <div className="leading-tight">
             <div className="font-display font-bold text-foreground text-base md:text-lg">
               Bimla Devi Hospital

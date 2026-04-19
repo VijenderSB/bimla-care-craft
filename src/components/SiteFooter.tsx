@@ -1,6 +1,7 @@
 import { Link } from "@tanstack/react-router";
 import { Phone, Mail, MapPin, Clock } from "lucide-react";
 import { SITE } from "@/lib/site";
+import logo from "@/assets/logo-bdh.png";
 
 export function SiteFooter() {
   return (
@@ -8,8 +9,8 @@ export function SiteFooter() {
       <div className="container-prose grid gap-10 py-14 md:grid-cols-4">
         <div>
           <div className="flex items-center gap-3">
-            <div className="grid h-11 w-11 place-items-center rounded-xl bg-primary-foreground/10 font-display text-lg font-bold">
-              B
+            <div className="grid h-12 w-12 place-items-center rounded-xl bg-primary-foreground p-1.5">
+              <img src={logo} alt="Bimla Devi Hospital logo" className="h-full w-full object-contain" />
             </div>
             <div>
               <div className="font-display font-bold">Bimla Devi Hospital</div>
