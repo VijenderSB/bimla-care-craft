@@ -4,6 +4,7 @@ import appCss from "../styles.css?url";
 import { SiteHeader } from "@/components/SiteHeader";
 import { SiteFooter } from "@/components/SiteFooter";
 import { FloatingActions } from "@/components/FloatingActions";
+import { AppointmentForm } from "@/components/AppointmentForm";
 import { SITE } from "@/lib/site";
 
 const localBusinessSchema = {
@@ -116,6 +117,7 @@ function RootComponent() {
       <main className="flex-1">
         <Outlet />
       </main>
+      <AppointmentForm />
       <SiteFooter />
       <FloatingActions />
     </div>
