@@ -16,9 +16,11 @@ export function FloatingActions() {
       <a
         href={`tel:${SITE.phoneTel}`}
         aria-label="Call Bimla Devi Hospital"
-        className="grid h-14 w-14 place-items-center rounded-full bg-emergency text-emergency-foreground shadow-elevated hover:scale-105 transition-transform animate-pulse"
+        className="relative grid h-14 w-14 place-items-center rounded-full bg-emergency text-emergency-foreground shadow-elevated hover:scale-105 transition-transform"
       >
-        <Phone className="h-6 w-6" />
+        <span className="absolute inset-0 rounded-full bg-emergency animate-ping opacity-60" aria-hidden="true" />
+        <span className="absolute inset-0 rounded-full bg-emergency animate-emergency-pulse opacity-40" aria-hidden="true" />
+        <Phone className="relative h-6 w-6" />
       </a>
     </div>
   );

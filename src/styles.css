@@ -153,6 +153,15 @@
   }
 }
 
+@keyframes emergency-pulse {
+  0%, 100% { transform: scale(1); opacity: 0.4; }
+  50% { transform: scale(1.35); opacity: 0; }
+}
+
+.animate-emergency-pulse {
+  animation: emergency-pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+}
+
 @layer utilities {
   .container-prose {
     max-width: 1200px;
