@@ -84,9 +84,9 @@
   --destructive: oklch(0.577 0.245 27.325);
   --destructive-foreground: oklch(0.99 0.005 0);
 
-  /* Emergency red — used only for emergency CTAs/banners */
-  --emergency: oklch(0.55 0.23 26);
-  --emergency-foreground: oklch(0.99 0.005 0);
+  /* Emergency green — used for emergency CTAs/banners (per brand preference) */
+  --emergency: oklch(0.55 0.16 150);
+  --emergency-foreground: oklch(0.99 0.005 150);
 
   /* Success / cashless green */
   --success: oklch(0.58 0.14 155);
@@ -119,8 +119,8 @@
   --accent-foreground: oklch(0.97 0.005 252);
   --destructive: oklch(0.65 0.21 26);
   --destructive-foreground: oklch(0.99 0.005 0);
-  --emergency: oklch(0.62 0.22 26);
-  --emergency-foreground: oklch(0.99 0.005 0);
+  --emergency: oklch(0.62 0.16 150);
+  --emergency-foreground: oklch(0.99 0.005 150);
   --success: oklch(0.65 0.14 155);
   --success-foreground: oklch(0.18 0.03 252);
   --trust: oklch(0.7 0.15 150);
