@@ -8,14 +8,8 @@ export function SiteFooter() {
     <footer className="mt-20 bg-primary text-primary-foreground">
       <div className="container-prose grid gap-10 py-14 md:grid-cols-4">
         <div>
-          <div className="flex items-center gap-3">
-            <div className="grid h-12 w-12 place-items-center rounded-xl bg-primary-foreground p-1.5">
-              <img src={logo} alt="Bimla Devi Hospital logo" className="h-full w-full object-contain" />
-            </div>
-            <div>
-              <div className="font-display font-bold">Bimla Devi Hospital</div>
-              <div className="text-xs opacity-80">Multi-Speciality • Mayur Vihar, Delhi</div>
-            </div>
+          <div className="rounded-xl bg-primary-foreground p-3 inline-block">
+            <img src={logo} alt="Bimla Devi Hospital logo" className="h-20 w-auto object-contain" />
           </div>
           <p className="mt-4 text-sm leading-relaxed opacity-90">
             Affordable, trusted, multi-speciality care for every family — backed by experienced

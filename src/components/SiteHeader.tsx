@@ -37,22 +37,12 @@ export function SiteHeader() {
       </div>
 
       <div className="container-prose flex items-center justify-between py-3">
-        <Link to="/" className="flex items-center gap-3" aria-label="Bimla Devi Hospital — Home">
+        <Link to="/" className="flex items-center" aria-label="Bimla Devi Hospital — Home">
           <img
             src={logo}
             alt="Bimla Devi Hospital logo"
-            className="h-12 w-auto md:h-14"
-            width={56}
-            height={56}
+            className="h-16 w-auto md:h-20"
           />
-          <div className="leading-tight">
-            <div className="font-display font-bold text-foreground text-base md:text-lg">
-              Bimla Devi Hospital
-            </div>
-            <div className="text-[11px] md:text-xs text-muted-foreground">
-              Affordable • Trusted • Multi-Speciality
-            </div>
-          </div>
         </Link>
 
         <nav className="hidden lg:flex items-center gap-1">
@@ -70,12 +60,6 @@ export function SiteHeader() {
         </nav>
 
         <div className="flex items-center gap-2">
-          <a
-            href={`tel:${SITE.phoneTel}`}
-            className="hidden sm:inline-flex items-center gap-2 rounded-lg border border-border px-3 py-2 text-sm font-semibold text-primary hover:bg-primary-soft transition-colors"
-          >
-            <Phone className="h-4 w-4" /> {SITE.phone}
-          </a>
           <Link
             to="/contact"
             className="hidden md:inline-flex items-center gap-2 rounded-lg bg-primary px-4 py-2 text-sm font-semibold text-primary-foreground shadow-soft hover:opacity-95 transition-opacity"
