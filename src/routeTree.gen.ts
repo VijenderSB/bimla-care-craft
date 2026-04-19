@@ -9,38 +9,200 @@
 // Additionally, you should also exclude this file from your linter and/or formatter to prevent it from being checked or modified.
 
 import { Route as rootRouteImport } from './routes/__root'
+import { Route as EmergencyRouteImport } from './routes/emergency'
+import { Route as ContactRouteImport } from './routes/contact'
+import { Route as CashlessRouteImport } from './routes/cashless'
+import { Route as AboutRouteImport } from './routes/about'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as TreatmentsIndexRouteImport } from './routes/treatments.index'
+import { Route as SpecialitiesIndexRouteImport } from './routes/specialities.index'
+import { Route as DoctorsIndexRouteImport } from './routes/doctors.index'
+import { Route as TreatmentsSlugRouteImport } from './routes/treatments.$slug'
+import { Route as SpecialitiesSlugRouteImport } from './routes/specialities.$slug'
+import { Route as DoctorsSlugRouteImport } from './routes/doctors.$slug'
 
+const EmergencyRoute = EmergencyRouteImport.update({
+  id: '/emergency',
+  path: '/emergency',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ContactRoute = ContactRouteImport.update({
+  id: '/contact',
+  path: '/contact',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const CashlessRoute = CashlessRouteImport.update({
+  id: '/cashless',
+  path: '/cashless',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const AboutRoute = AboutRouteImport.update({
+  id: '/about',
+  path: '/about',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
   getParentRoute: () => rootRouteImport,
 } as any)
+const TreatmentsIndexRoute = TreatmentsIndexRouteImport.update({
+  id: '/treatments/',
+  path: '/treatments/',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const SpecialitiesIndexRoute = SpecialitiesIndexRouteImport.update({
+  id: '/specialities/',
+  path: '/specialities/',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const DoctorsIndexRoute = DoctorsIndexRouteImport.update({
+  id: '/doctors/',
+  path: '/doctors/',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const TreatmentsSlugRoute = TreatmentsSlugRouteImport.update({
+  id: '/treatments/$slug',
+  path: '/treatments/$slug',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const SpecialitiesSlugRoute = SpecialitiesSlugRouteImport.update({
+  id: '/specialities/$slug',
+  path: '/specialities/$slug',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const DoctorsSlugRoute = DoctorsSlugRouteImport.update({
+  id: '/doctors/$slug',
+  path: '/doctors/$slug',
+  getParentRoute: () => rootRouteImport,
+} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/about': typeof AboutRoute
+  '/cashless': typeof CashlessRoute
+  '/contact': typeof ContactRoute
+  '/emergency': typeof EmergencyRoute
+  '/doctors/$slug': typeof DoctorsSlugRoute
+  '/specialities/$slug': typeof SpecialitiesSlugRoute
+  '/treatments/$slug': typeof TreatmentsSlugRoute
+  '/doctors/': typeof DoctorsIndexRoute
+  '/specialities/': typeof SpecialitiesIndexRoute
+  '/treatments/': typeof TreatmentsIndexRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/about': typeof AboutRoute
+  '/cashless': typeof CashlessRoute
+  '/contact': typeof ContactRoute
+  '/emergency': typeof EmergencyRoute
+  '/doctors/$slug': typeof DoctorsSlugRoute
+  '/specialities/$slug': typeof SpecialitiesSlugRoute
+  '/treatments/$slug': typeof TreatmentsSlugRoute
+  '/doctors': typeof DoctorsIndexRoute
+  '/specialities': typeof SpecialitiesIndexRoute
+  '/treatments': typeof TreatmentsIndexRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
+  '/about': typeof AboutRoute
+  '/cashless': typeof CashlessRoute
+  '/contact': typeof ContactRoute
+  '/emergency': typeof EmergencyRoute
+  '/doctors/$slug': typeof DoctorsSlugRoute
+  '/specialities/$slug': typeof SpecialitiesSlugRoute
+  '/treatments/$slug': typeof TreatmentsSlugRoute
+  '/doctors/': typeof DoctorsIndexRoute
+  '/specialities/': typeof SpecialitiesIndexRoute
+  '/treatments/': typeof TreatmentsIndexRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/'
+  fullPaths:
+    | '/'
+    | '/about'
+    | '/cashless'
+    | '/contact'
+    | '/emergency'
+    | '/doctors/$slug'
+    | '/specialities/$slug'
+    | '/treatments/$slug'
+    | '/doctors/'
+    | '/specialities/'
+    | '/treatments/'
   fileRoutesByTo: FileRoutesByTo
-  to: '/'
-  id: '__root__' | '/'
+  to:
+    | '/'
+    | '/about'
+    | '/cashless'
+    | '/contact'
+    | '/emergency'
+    | '/doctors/$slug'
+    | '/specialities/$slug'
+    | '/treatments/$slug'
+    | '/doctors'
+    | '/specialities'
+    | '/treatments'
+  id:
+    | '__root__'
+    | '/'
+    | '/about'
+    | '/cashless'
+    | '/contact'
+    | '/emergency'
+    | '/doctors/$slug'
+    | '/specialities/$slug'
+    | '/treatments/$slug'
+    | '/doctors/'
+    | '/specialities/'
+    | '/treatments/'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  AboutRoute: typeof AboutRoute
+  CashlessRoute: typeof CashlessRoute
+  ContactRoute: typeof ContactRoute
+  EmergencyRoute: typeof EmergencyRoute
+  DoctorsSlugRoute: typeof DoctorsSlugRoute
+  SpecialitiesSlugRoute: typeof SpecialitiesSlugRoute
+  TreatmentsSlugRoute: typeof TreatmentsSlugRoute
+  DoctorsIndexRoute: typeof DoctorsIndexRoute
+  SpecialitiesIndexRoute: typeof SpecialitiesIndexRoute
+  TreatmentsIndexRoute: typeof TreatmentsIndexRoute
 }
 
 declare module '@tanstack/react-router' {
   interface FileRoutesByPath {
+    '/emergency': {
+      id: '/emergency'
+      path: '/emergency'
+      fullPath: '/emergency'
+      preLoaderRoute: typeof EmergencyRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/contact': {
+      id: '/contact'
+      path: '/contact'
+      fullPath: '/contact'
+      preLoaderRoute: typeof ContactRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/cashless': {
+      id: '/cashless'
+      path: '/cashless'
+      fullPath: '/cashless'
+      preLoaderRoute: typeof CashlessRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/about': {
+      id: '/about'
+      path: '/about'
+      fullPath: '/about'
+      preLoaderRoute: typeof AboutRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/': {
       id: '/'
       path: '/'
@@ -48,11 +210,63 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof IndexRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/treatments/': {
+      id: '/treatments/'
+      path: '/treatments'
+      fullPath: '/treatments/'
+      preLoaderRoute: typeof TreatmentsIndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/specialities/': {
+      id: '/specialities/'
+      path: '/specialities'
+      fullPath: '/specialities/'
+      preLoaderRoute: typeof SpecialitiesIndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/doctors/': {
+      id: '/doctors/'
+      path: '/doctors'
+      fullPath: '/doctors/'
+      preLoaderRoute: typeof DoctorsIndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/treatments/$slug': {
+      id: '/treatments/$slug'
+      path: '/treatments/$slug'
+      fullPath: '/treatments/$slug'
+      preLoaderRoute: typeof TreatmentsSlugRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/specialities/$slug': {
+      id: '/specialities/$slug'
+      path: '/specialities/$slug'
+      fullPath: '/specialities/$slug'
+      preLoaderRoute: typeof SpecialitiesSlugRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/doctors/$slug': {
+      id: '/doctors/$slug'
+      path: '/doctors/$slug'
+      fullPath: '/doctors/$slug'
+      preLoaderRoute: typeof DoctorsSlugRouteImport
+      parentRoute: typeof rootRouteImport
+    }
   }
 }
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  AboutRoute: AboutRoute,
+  CashlessRoute: CashlessRoute,
+  ContactRoute: ContactRoute,
+  EmergencyRoute: EmergencyRoute,
+  DoctorsSlugRoute: DoctorsSlugRoute,
+  SpecialitiesSlugRoute: SpecialitiesSlugRoute,
+  TreatmentsSlugRoute: TreatmentsSlugRoute,
+  DoctorsIndexRoute: DoctorsIndexRoute,
+  SpecialitiesIndexRoute: SpecialitiesIndexRoute,
+  TreatmentsIndexRoute: TreatmentsIndexRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
