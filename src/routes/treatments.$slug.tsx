@@ -55,7 +55,7 @@ function TreatmentPage() {
             <section>
               <h2 className="font-display text-2xl font-bold text-foreground">Benefits at Bimla Devi Hospital</h2>
               <ul className="mt-4 grid gap-3 sm:grid-cols-2">
-                {t.benefits.map((b) => (
+                {t.benefits.map((b: string) => (
                   <li key={b} className="flex items-start gap-2 rounded-xl border border-border bg-card p-3 text-sm text-foreground">
                     <CheckCircle2 className="mt-0.5 h-5 w-5 shrink-0 text-primary" /> {b}
                   </li>

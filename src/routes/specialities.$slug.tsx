@@ -109,7 +109,7 @@ function SpecialityPage() {
             {doctors.length > 0 && (
               <Block title={`Our ${s.name} consultants`}>
                 <div className="grid gap-4 sm:grid-cols-2">
-                  {doctors.map((d) => (
+                  {doctors.map((d: typeof doctors[number]) => (
                     <Link key={d.slug} to="/doctors/$slug" params={{ slug: d.slug }} className="flex gap-3 rounded-xl border border-border bg-card p-3 hover:border-primary">
                       <div className="h-16 w-16 shrink-0 overflow-hidden rounded-lg bg-primary-soft">
                         {d.image ? <img src={d.image} alt={d.name} className="h-full w-full object-cover" /> : <div className="grid h-full place-items-center text-primary"><Stethoscope className="h-6 w-6"/></div>}
