@@ -10,6 +10,24 @@ export const Route = createFileRoute("/treatments/")({
       { name: "description", content: "Full list of treatments at Bimla Devi Hospital — maternity, laparoscopic surgery, ICU, fracture care, ENT, urology, dental, dialysis & more. Cashless mediclaim accepted." },
       { property: "og:title", content: "Treatments & Services at Bimla Devi Hospital, Delhi" },
       { property: "og:description", content: "20+ treatments across 10 specialities — modern, affordable, with senior consultants and cashless insurance." },
+      { property: "og:url", content: `${SITE.origin}/treatments` },
+    ],
+    links: [{ rel: "canonical", href: `${SITE.origin}/treatments` }],
+    scripts: [
+      {
+        type: "application/ld+json",
+        children: JSON.stringify({
+          "@context": "https://schema.org",
+          "@type": "ItemList",
+          name: "Treatments at Bimla Devi Hospital",
+          itemListElement: TREATMENTS.map((t, i) => ({
+            "@type": "ListItem",
+            position: i + 1,
+            url: `${SITE.origin}/treatments/${t.slug}`,
+            name: t.name,
+          })),
+        }),
+      },
     ],
   }),
   component: TreatmentsIndex,

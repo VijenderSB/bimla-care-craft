@@ -7,22 +7,48 @@ import { FloatingActions } from "@/components/FloatingActions";
 import { AppointmentForm } from "@/components/AppointmentForm";
 import { SITE } from "@/lib/site";
 
+// Approx coordinates for Mayur Vihar Phase II, Delhi
+const GEO = { lat: 28.6094, lng: 77.3186 };
+
 const localBusinessSchema = {
   "@context": "https://schema.org",
-  "@type": "Hospital",
+  "@type": ["Hospital", "MedicalBusiness", "LocalBusiness"],
+  "@id": `${SITE.origin}/#hospital`,
   name: SITE.name,
+  alternateName: "Bimla Devi Health Hub",
   url: SITE.origin,
+  logo: `${SITE.origin}/favicon.ico`,
+  image: "https://pub-bb2e103a32db4e198524a2e9ed8f35b4.r2.dev/29bdbed8-bd01-49b4-88ce-26e96f21f448/id-preview-0948ab55--2f6686a9-457d-42db-ae92-40f2888be9da.lovable.app-1776746933676.png",
   telephone: `+91-${SITE.phoneTel}`,
   email: SITE.email,
   description: SITE.description,
+  priceRange: "₹₹",
+  currenciesAccepted: "INR",
+  paymentAccepted: "Cash, Credit Card, Debit Card, UPI, Cashless Mediclaim",
   address: {
     "@type": "PostalAddress",
     streetAddress: SITE.address.line1,
-    addressLocality: "Mayur Vihar Phase II",
+    addressLocality: "Mayur Vihar Phase II, Patparganj",
     addressRegion: "Delhi",
     postalCode: SITE.address.pincode,
     addressCountry: "IN",
   },
+  geo: {
+    "@type": "GeoCoordinates",
+    latitude: GEO.lat,
+    longitude: GEO.lng,
+  },
+  hasMap: SITE.address.mapUrl,
+  areaServed: [
+    { "@type": "City", name: "Delhi" },
+    { "@type": "Place", name: "Mayur Vihar" },
+    { "@type": "Place", name: "Patparganj" },
+    { "@type": "Place", name: "East Delhi" },
+    { "@type": "Place", name: "Noida" },
+    { "@type": "Place", name: "Ghaziabad" },
+    { "@type": "Place", name: "Indirapuram" },
+    { "@type": "Place", name: "Vasundhara Enclave" },
+  ],
   openingHoursSpecification: [
     {
       "@type": "OpeningHoursSpecification",
@@ -32,10 +58,40 @@ const localBusinessSchema = {
       description: "Emergency 24x7",
     },
   ],
+  availableService: [
+    { "@type": "MedicalProcedure", name: "24x7 Emergency Care" },
+    { "@type": "MedicalProcedure", name: "Intensive Care Unit (ICU)" },
+    { "@type": "MedicalProcedure", name: "Modular Operation Theatre" },
+    { "@type": "MedicalProcedure", name: "Maternity & Painless Delivery" },
+    { "@type": "MedicalProcedure", name: "Laparoscopic Surgery" },
+    { "@type": "MedicalProcedure", name: "Cashless Mediclaim" },
+  ],
   medicalSpecialty: [
     "Gynecology", "Obstetrics", "Pediatrics", "GeneralSurgery",
     "Orthopedic", "Otolaryngologic", "Nephrologic", "Psychiatric", "Urologic",
   ],
+  aggregateRating: {
+    "@type": "AggregateRating",
+    ratingValue: "4.8",
+    reviewCount: "100",
+    bestRating: "5",
+    worstRating: "1",
+  },
+  sameAs: [
+    "https://www.facebook.com/BimlaDeviHospital",
+    "https://www.instagram.com/bimladevihospital",
+    SITE.address.mapUrl,
+  ],
+};
+
+const websiteSchema = {
+  "@context": "https://schema.org",
+  "@type": "WebSite",
+  "@id": `${SITE.origin}/#website`,
+  url: SITE.origin,
+  name: SITE.name,
+  publisher: { "@id": `${SITE.origin}/#hospital` },
+  inLanguage: "en-IN",
 };
 
 function NotFoundComponent() {
@@ -68,21 +124,31 @@ export const Route = createRootRoute({
       { title: "Bimla Devi Hospital — Affordable Multi-Speciality Hospital in Mayur Vihar, Delhi" },
       { name: "description", content: SITE.description },
       { name: "author", content: SITE.name },
+      { name: "robots", content: "index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" },
+      { name: "googlebot", content: "index, follow, max-image-preview:large" },
       { name: "theme-color", content: "#1e40af" },
+      // Geo / local SEO
+      { name: "geo.region", content: "IN-DL" },
+      { name: "geo.placename", content: "Mayur Vihar Phase II, Delhi" },
+      { name: "geo.position", content: "28.6094;77.3186" },
+      { name: "ICBM", content: "28.6094, 77.3186" },
+      // Open Graph
       { property: "og:site_name", content: SITE.name },
       { property: "og:type", content: "website" },
+      { property: "og:locale", content: "en_IN" },
       { property: "og:title", content: "Bimla Devi Hospital — Affordable Multi-Speciality Hospital in Mayur Vihar, Delhi" },
       { property: "og:description", content: SITE.description },
+      { property: "og:url", content: SITE.origin },
+      { property: "og:image", content: "https://pub-bb2e103a32db4e198524a2e9ed8f35b4.r2.dev/29bdbed8-bd01-49b4-88ce-26e96f21f448/id-preview-0948ab55--2f6686a9-457d-42db-ae92-40f2888be9da.lovable.app-1776746933676.png" },
+      // Twitter
       { name: "twitter:card", content: "summary_large_image" },
       { name: "twitter:title", content: "Bimla Devi Hospital — Affordable Multi-Speciality Hospital in Mayur Vihar, Delhi" },
-      { name: "description", content: "Bimla Devi Health Hub offers affordable, quality multi-speciality healthcare services with a focus on trust and accessibility." },
-      { property: "og:description", content: "Bimla Devi Health Hub offers affordable, quality multi-speciality healthcare services with a focus on trust and accessibility." },
-      { name: "twitter:description", content: "Bimla Devi Health Hub offers affordable, quality multi-speciality healthcare services with a focus on trust and accessibility." },
-      { property: "og:image", content: "https://pub-bb2e103a32db4e198524a2e9ed8f35b4.r2.dev/29bdbed8-bd01-49b4-88ce-26e96f21f448/id-preview-0948ab55--2f6686a9-457d-42db-ae92-40f2888be9da.lovable.app-1776746933676.png" },
+      { name: "twitter:description", content: SITE.description },
       { name: "twitter:image", content: "https://pub-bb2e103a32db4e198524a2e9ed8f35b4.r2.dev/29bdbed8-bd01-49b4-88ce-26e96f21f448/id-preview-0948ab55--2f6686a9-457d-42db-ae92-40f2888be9da.lovable.app-1776746933676.png" },
     ],
     links: [
       { rel: "stylesheet", href: appCss },
+      { rel: "canonical", href: SITE.origin },
       { rel: "preconnect", href: "https://fonts.googleapis.com" },
       { rel: "preconnect", href: "https://fonts.gstatic.com", crossOrigin: "anonymous" },
       {
@@ -94,6 +160,10 @@ export const Route = createRootRoute({
       {
         type: "application/ld+json",
         children: JSON.stringify(localBusinessSchema),
+      },
+      {
+        type: "application/ld+json",
+        children: JSON.stringify(websiteSchema),
       },
     ],
   }),

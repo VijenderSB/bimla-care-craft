@@ -12,6 +12,23 @@ export const Route = createFileRoute("/emergency")({
       { property: "og:title", content: "24×7 Emergency & ICU — Bimla Devi Hospital, Delhi" },
       { property: "og:description", content: "Round-the-clock doctor-led emergency room with ICU & OT on the same campus." },
       { property: "og:image", content: emergencyImg },
+      { property: "og:url", content: `${SITE.origin}/emergency` },
+      { name: "twitter:image", content: emergencyImg },
+    ],
+    links: [{ rel: "canonical", href: `${SITE.origin}/emergency` }],
+    scripts: [
+      {
+        type: "application/ld+json",
+        children: JSON.stringify({
+          "@context": "https://schema.org",
+          "@type": "EmergencyService",
+          name: "Bimla Devi Hospital Emergency",
+          telephone: `+91-${SITE.phoneTel}`,
+          url: `${SITE.origin}/emergency`,
+          availableService: { "@type": "MedicalProcedure", name: "24x7 Emergency, ICU, Trauma Care, Ambulance" },
+          hoursAvailable: { "@type": "OpeningHoursSpecification", dayOfWeek: ["Mon","Tue","Wed","Thu","Fri","Sat","Sun"], opens: "00:00", closes: "23:59" },
+        }),
+      },
     ],
   }),
   component: EmergencyPage,

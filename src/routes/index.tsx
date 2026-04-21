@@ -20,9 +20,11 @@ export const Route = createFileRoute("/")({
       { name: "description", content: "Trusted multi-speciality hospital in Delhi with 24×7 emergency, ICU, modular OT, gynaecology, paediatrics, surgery and cashless mediclaim. Book your appointment today." },
       { property: "og:title", content: "Bimla Devi Hospital — Affordable Healthcare for Every Family" },
       { property: "og:description", content: "Multi-speciality hospital in Mayur Vihar, Delhi. ICU, 24×7 emergency, cashless mediclaim and trusted doctors." },
+      { property: "og:url", content: SITE.origin },
       { property: "og:image", content: "https://bimladevi.hospital/wp-content/uploads/2026/03/Bimla-Devi-Hospital-Excellence-in-Healthcare-1024x1024.webp" },
       { property: "twitter:image", content: "https://bimladevi.hospital/wp-content/uploads/2026/03/Bimla-Devi-Hospital-Excellence-in-Healthcare-1024x1024.webp" },
     ],
+    links: [{ rel: "canonical", href: SITE.origin }],
     scripts: [
       {
         type: "application/ld+json",

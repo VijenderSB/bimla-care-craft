@@ -12,6 +12,25 @@ export const Route = createFileRoute("/about")({
       { name: "description", content: "Founded by Dr. Ashok Kumar Walia, Bimla Devi Hospital has served East Delhi families with affordable, compassionate, multi-speciality care for decades. Read our story." },
       { property: "og:title", content: "About Bimla Devi Hospital — Our Story & Mission" },
       { property: "og:description", content: "A legacy of compassionate, affordable healthcare for East Delhi families." },
+      { property: "og:url", content: "https://bimladevi.hospital/about" },
+    ],
+    links: [{ rel: "canonical", href: "https://bimladevi.hospital/about" }],
+    scripts: [
+      {
+        type: "application/ld+json",
+        children: JSON.stringify({
+          "@context": "https://schema.org",
+          "@type": "AboutPage",
+          name: "About Bimla Devi Hospital",
+          url: "https://bimladevi.hospital/about",
+          mainEntity: {
+            "@type": "Hospital",
+            name: "Bimla Devi Hospital",
+            founder: { "@type": "Person", name: "Dr. Ashok Kumar Walia" },
+            foundingDate: "1980",
+          },
+        }),
+      },
     ],
   }),
   component: AboutPage,

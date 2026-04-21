@@ -10,6 +10,24 @@ export const Route = createFileRoute("/specialities/")({
       { name: "description", content: "Explore all medical specialities at Bimla Devi Hospital — gynaecology, paediatrics, surgery, orthopaedics, ENT, nephrology, urology, psychiatry, dental and more." },
       { property: "og:title", content: "All Specialities at Bimla Devi Hospital, Delhi" },
       { property: "og:description", content: "Comprehensive multi-speciality care under one roof." },
+      { property: "og:url", content: "https://bimladevi.hospital/specialities" },
+    ],
+    links: [{ rel: "canonical", href: "https://bimladevi.hospital/specialities" }],
+    scripts: [
+      {
+        type: "application/ld+json",
+        children: JSON.stringify({
+          "@context": "https://schema.org",
+          "@type": "ItemList",
+          name: "Medical Specialities at Bimla Devi Hospital",
+          itemListElement: SPECIALITIES.map((s, i) => ({
+            "@type": "ListItem",
+            position: i + 1,
+            url: `https://bimladevi.hospital/specialities/${s.slug}`,
+            name: s.name,
+          })),
+        }),
+      },
     ],
   }),
   component: SpecialitiesIndex,

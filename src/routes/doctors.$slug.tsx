@@ -14,14 +14,19 @@ export const Route = createFileRoute("/doctors/$slug")({
     if (!d) return { meta: [{ title: "Doctor not found — Bimla Devi Hospital" }] };
     const title = `${d.name} — ${d.designation} | Bimla Devi Hospital, Delhi`;
     const desc = `${d.name} (${d.qualification}), ${d.designation} at Bimla Devi Hospital, Mayur Vihar, Delhi. ${d.experience} experience in ${d.speciality}. Book an appointment.`;
+    const url = `${SITE.origin}/doctors/${d.slug}`;
     return {
       meta: [
         { title },
         { name: "description", content: desc },
         { property: "og:title", content: title },
         { property: "og:description", content: desc },
+        { property: "og:url", content: url },
+        { property: "og:type", content: "profile" },
         ...(d.image ? [{ property: "og:image", content: d.image }] : []),
+        ...(d.image ? [{ name: "twitter:image", content: d.image }] : []),
       ],
+      links: [{ rel: "canonical", href: url }],
       scripts: [
         {
           type: "application/ld+json",
@@ -29,10 +34,36 @@ export const Route = createFileRoute("/doctors/$slug")({
             "@context": "https://schema.org",
             "@type": "Physician",
             name: d.name,
+            url,
             medicalSpecialty: d.speciality,
             description: d.bio,
             image: d.image,
-            worksFor: { "@type": "Hospital", name: "Bimla Devi Hospital" },
+            jobTitle: d.designation,
+            worksFor: {
+              "@type": "Hospital",
+              name: "Bimla Devi Hospital",
+              url: SITE.origin,
+              address: {
+                "@type": "PostalAddress",
+                streetAddress: "Pocket B, Plot No. 5, Ram Kumar Gautam Marg",
+                addressLocality: "Mayur Vihar Phase II, Patparganj",
+                addressRegion: "Delhi",
+                postalCode: "110091",
+                addressCountry: "IN",
+              },
+            },
+          }),
+        },
+        {
+          type: "application/ld+json",
+          children: JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "BreadcrumbList",
+            itemListElement: [
+              { "@type": "ListItem", position: 1, name: "Home", item: SITE.origin },
+              { "@type": "ListItem", position: 2, name: "Doctors", item: `${SITE.origin}/doctors` },
+              { "@type": "ListItem", position: 3, name: d.name, item: url },
+            ],
           }),
         },
       ],

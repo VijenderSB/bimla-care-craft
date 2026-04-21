@@ -11,6 +11,24 @@ export const Route = createFileRoute("/doctors/")({
       { name: "description", content: "Meet our senior consultants in gynaecology, paediatrics, surgery, orthopaedics, ENT, nephrology, urology, psychiatry and more. Book your appointment today." },
       { property: "og:title", content: "Doctors at Bimla Devi Hospital, Delhi" },
       { property: "og:description", content: "Senior consultants across all major specialities — book online or call." },
+      { property: "og:url", content: "https://bimladevi.hospital/doctors" },
+    ],
+    links: [{ rel: "canonical", href: "https://bimladevi.hospital/doctors" }],
+    scripts: [
+      {
+        type: "application/ld+json",
+        children: JSON.stringify({
+          "@context": "https://schema.org",
+          "@type": "ItemList",
+          name: "Doctors at Bimla Devi Hospital",
+          itemListElement: DOCTORS.map((d, i) => ({
+            "@type": "ListItem",
+            position: i + 1,
+            url: `https://bimladevi.hospital/doctors/${d.slug}`,
+            name: d.name,
+          })),
+        }),
+      },
     ],
   }),
   component: DoctorsPage,
