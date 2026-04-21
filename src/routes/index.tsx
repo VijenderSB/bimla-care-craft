@@ -185,22 +185,43 @@ function HomePage() {
             description="Our most-requested procedures, performed safely in modern theatres with cashless insurance support."
           />
           <div className="mt-10 grid gap-5 md:grid-cols-2 lg:grid-cols-3">
-            {TREATMENTS.map((t) => (
-              <Link
-                key={t.slug}
-                to="/treatments/$slug"
-                params={{ slug: t.slug }}
-                className="group rounded-2xl border border-border bg-card p-6 shadow-soft transition-all hover:-translate-y-0.5 hover:shadow-card"
-              >
-                <h3 className="font-display text-lg font-semibold text-foreground group-hover:text-primary">
-                  {t.name}
-                </h3>
-                <p className="mt-2 text-sm text-muted-foreground">{t.short}</p>
-                <span className="mt-4 inline-block text-sm font-semibold text-primary">
-                  Read more →
-                </span>
-              </Link>
-            ))}
+            {(() => {
+              const KEY_SLUGS = [
+                "normal-delivery",
+                "c-section",
+                "laparoscopic-cholecystectomy",
+                "laparoscopic-hysterectomy",
+                "fracture-fixation",
+                "tonsillectomy",
+              ];
+              const keyTreatments = KEY_SLUGS
+                .map((slug) => TREATMENTS.find((t) => t.slug === slug))
+                .filter((t): t is (typeof TREATMENTS)[number] => Boolean(t));
+              return keyTreatments.map((t) => (
+                <Link
+                  key={t.slug}
+                  to="/treatments/$slug"
+                  params={{ slug: t.slug }}
+                  className="group rounded-2xl border border-border bg-card p-6 shadow-soft transition-all hover:-translate-y-0.5 hover:shadow-card"
+                >
+                  <h3 className="font-display text-lg font-semibold text-foreground group-hover:text-primary">
+                    {t.name}
+                  </h3>
+                  <p className="mt-2 text-sm text-muted-foreground">{t.short}</p>
+                  <span className="mt-4 inline-block text-sm font-semibold text-primary">
+                    Read more →
+                  </span>
+                </Link>
+              ));
+            })()}
+          </div>
+          <div className="mt-8 text-center">
+            <Link
+              to="/treatments"
+              className="inline-flex items-center gap-2 rounded-lg border border-primary px-5 py-3 font-semibold text-primary hover:bg-primary-soft"
+            >
+              View all treatments by speciality
+            </Link>
           </div>
         </div>
       </section>
