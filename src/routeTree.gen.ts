@@ -9,6 +9,9 @@
 // Additionally, you should also exclude this file from your linter and/or formatter to prevent it from being checked or modified.
 
 import { Route as rootRouteImport } from './routes/__root'
+import { Route as SitemapDotxmlRouteImport } from './routes/sitemap[.]xml'
+import { Route as RobotsDottxtRouteImport } from './routes/robots[.]txt'
+import { Route as LlmsDottxtRouteImport } from './routes/llms[.]txt'
 import { Route as EmergencyRouteImport } from './routes/emergency'
 import { Route as ContactRouteImport } from './routes/contact'
 import { Route as CashlessRouteImport } from './routes/cashless'
@@ -21,6 +24,21 @@ import { Route as TreatmentsSlugRouteImport } from './routes/treatments.$slug'
 import { Route as SpecialitiesSlugRouteImport } from './routes/specialities.$slug'
 import { Route as DoctorsSlugRouteImport } from './routes/doctors.$slug'
 
+const SitemapDotxmlRoute = SitemapDotxmlRouteImport.update({
+  id: '/sitemap.xml',
+  path: '/sitemap.xml',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const RobotsDottxtRoute = RobotsDottxtRouteImport.update({
+  id: '/robots.txt',
+  path: '/robots.txt',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const LlmsDottxtRoute = LlmsDottxtRouteImport.update({
+  id: '/llms.txt',
+  path: '/llms.txt',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const EmergencyRoute = EmergencyRouteImport.update({
   id: '/emergency',
   path: '/emergency',
@@ -83,6 +101,9 @@ export interface FileRoutesByFullPath {
   '/cashless': typeof CashlessRoute
   '/contact': typeof ContactRoute
   '/emergency': typeof EmergencyRoute
+  '/llms.txt': typeof LlmsDottxtRoute
+  '/robots.txt': typeof RobotsDottxtRoute
+  '/sitemap.xml': typeof SitemapDotxmlRoute
   '/doctors/$slug': typeof DoctorsSlugRoute
   '/specialities/$slug': typeof SpecialitiesSlugRoute
   '/treatments/$slug': typeof TreatmentsSlugRoute
@@ -96,6 +117,9 @@ export interface FileRoutesByTo {
   '/cashless': typeof CashlessRoute
   '/contact': typeof ContactRoute
   '/emergency': typeof EmergencyRoute
+  '/llms.txt': typeof LlmsDottxtRoute
+  '/robots.txt': typeof RobotsDottxtRoute
+  '/sitemap.xml': typeof SitemapDotxmlRoute
   '/doctors/$slug': typeof DoctorsSlugRoute
   '/specialities/$slug': typeof SpecialitiesSlugRoute
   '/treatments/$slug': typeof TreatmentsSlugRoute
@@ -110,6 +134,9 @@ export interface FileRoutesById {
   '/cashless': typeof CashlessRoute
   '/contact': typeof ContactRoute
   '/emergency': typeof EmergencyRoute
+  '/llms.txt': typeof LlmsDottxtRoute
+  '/robots.txt': typeof RobotsDottxtRoute
+  '/sitemap.xml': typeof SitemapDotxmlRoute
   '/doctors/$slug': typeof DoctorsSlugRoute
   '/specialities/$slug': typeof SpecialitiesSlugRoute
   '/treatments/$slug': typeof TreatmentsSlugRoute
@@ -125,6 +152,9 @@ export interface FileRouteTypes {
     | '/cashless'
     | '/contact'
     | '/emergency'
+    | '/llms.txt'
+    | '/robots.txt'
+    | '/sitemap.xml'
     | '/doctors/$slug'
     | '/specialities/$slug'
     | '/treatments/$slug'
@@ -138,6 +168,9 @@ export interface FileRouteTypes {
     | '/cashless'
     | '/contact'
     | '/emergency'
+    | '/llms.txt'
+    | '/robots.txt'
+    | '/sitemap.xml'
     | '/doctors/$slug'
     | '/specialities/$slug'
     | '/treatments/$slug'
@@ -151,6 +184,9 @@ export interface FileRouteTypes {
     | '/cashless'
     | '/contact'
     | '/emergency'
+    | '/llms.txt'
+    | '/robots.txt'
+    | '/sitemap.xml'
     | '/doctors/$slug'
     | '/specialities/$slug'
     | '/treatments/$slug'
@@ -165,6 +201,9 @@ export interface RootRouteChildren {
   CashlessRoute: typeof CashlessRoute
   ContactRoute: typeof ContactRoute
   EmergencyRoute: typeof EmergencyRoute
+  LlmsDottxtRoute: typeof LlmsDottxtRoute
+  RobotsDottxtRoute: typeof RobotsDottxtRoute
+  SitemapDotxmlRoute: typeof SitemapDotxmlRoute
   DoctorsSlugRoute: typeof DoctorsSlugRoute
   SpecialitiesSlugRoute: typeof SpecialitiesSlugRoute
   TreatmentsSlugRoute: typeof TreatmentsSlugRoute
@@ -175,6 +214,27 @@ export interface RootRouteChildren {
 
 declare module '@tanstack/react-router' {
   interface FileRoutesByPath {
+    '/sitemap.xml': {
+      id: '/sitemap.xml'
+      path: '/sitemap.xml'
+      fullPath: '/sitemap.xml'
+      preLoaderRoute: typeof SitemapDotxmlRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/robots.txt': {
+      id: '/robots.txt'
+      path: '/robots.txt'
+      fullPath: '/robots.txt'
+      preLoaderRoute: typeof RobotsDottxtRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/llms.txt': {
+      id: '/llms.txt'
+      path: '/llms.txt'
+      fullPath: '/llms.txt'
+      preLoaderRoute: typeof LlmsDottxtRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/emergency': {
       id: '/emergency'
       path: '/emergency'
@@ -261,6 +321,9 @@ const rootRouteChildren: RootRouteChildren = {
   CashlessRoute: CashlessRoute,
   ContactRoute: ContactRoute,
   EmergencyRoute: EmergencyRoute,
+  LlmsDottxtRoute: LlmsDottxtRoute,
+  RobotsDottxtRoute: RobotsDottxtRoute,
+  SitemapDotxmlRoute: SitemapDotxmlRoute,
   DoctorsSlugRoute: DoctorsSlugRoute,
   SpecialitiesSlugRoute: SpecialitiesSlugRoute,
   TreatmentsSlugRoute: TreatmentsSlugRoute,
