@@ -32,12 +32,53 @@ export const Route = createFileRoute("/treatments/$slug")({
     if (!t) return { meta: [{ title: "Treatment not found — Bimla Devi Hospital" }] };
     const title = `${t.name} in Delhi — Cost, Recovery & Care | Bimla Devi Hospital`;
     const desc = `${t.name} at Bimla Devi Hospital, Mayur Vihar, Delhi — ${t.short} Cashless mediclaim accepted. Speak to our team today.`;
+    const url = `${SITE.origin}/treatments/${t.slug}`;
+    const procedureSchema = {
+      "@context": "https://schema.org",
+      "@type": "MedicalProcedure",
+      name: t.name,
+      description: t.body,
+      url,
+      bodyLocation: t.speciality,
+      preparation: t.preparation?.join(". "),
+      followup: t.recovery,
+      howPerformed: t.procedure?.join(". "),
+      ...(t.anaesthesia ? { procedureType: t.anaesthesia } : {}),
+    };
+    const faqSchema = t.faqs && t.faqs.length > 0
+      ? {
+          "@context": "https://schema.org",
+          "@type": "FAQPage",
+          mainEntity: t.faqs.map((f) => ({
+            "@type": "Question",
+            name: f.q,
+            acceptedAnswer: { "@type": "Answer", text: f.a },
+          })),
+        }
+      : null;
+    const breadcrumbSchema = {
+      "@context": "https://schema.org",
+      "@type": "BreadcrumbList",
+      itemListElement: [
+        { "@type": "ListItem", position: 1, name: "Home", item: SITE.origin },
+        { "@type": "ListItem", position: 2, name: "Treatments", item: `${SITE.origin}/treatments` },
+        { "@type": "ListItem", position: 3, name: t.name, item: url },
+      ],
+    };
     return {
       meta: [
         { title },
         { name: "description", content: desc },
         { property: "og:title", content: title },
         { property: "og:description", content: desc },
+        { property: "og:url", content: url },
+        { property: "og:type", content: "article" },
+      ],
+      links: [{ rel: "canonical", href: url }],
+      scripts: [
+        { type: "application/ld+json", children: JSON.stringify(procedureSchema) },
+        { type: "application/ld+json", children: JSON.stringify(breadcrumbSchema) },
+        ...(faqSchema ? [{ type: "application/ld+json", children: JSON.stringify(faqSchema) }] : []),
       ],
     };
   },
