@@ -11,6 +11,25 @@ export const Route = createFileRoute("/contact")({
       { name: "description", content: "Book an appointment with Bimla Devi Hospital. Call 011 4188 7777 or send a request — our care team will confirm your slot quickly." },
       { property: "og:title", content: "Contact Bimla Devi Hospital, Delhi" },
       { property: "og:description", content: "Book an appointment, request a callback or visit us in Mayur Vihar Phase II." },
+      { property: "og:url", content: `${SITE.origin}/contact` },
+    ],
+    links: [{ rel: "canonical", href: `${SITE.origin}/contact` }],
+    scripts: [
+      {
+        type: "application/ld+json",
+        children: JSON.stringify({
+          "@context": "https://schema.org",
+          "@type": "ContactPage",
+          name: "Contact Bimla Devi Hospital",
+          url: `${SITE.origin}/contact`,
+          mainEntity: {
+            "@type": "Hospital",
+            name: "Bimla Devi Hospital",
+            telephone: `+91-${SITE.phoneTel}`,
+            email: SITE.email,
+          },
+        }),
+      },
     ],
   }),
   component: ContactPage,
