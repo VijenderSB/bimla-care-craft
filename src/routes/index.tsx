@@ -191,7 +191,7 @@ function HomePage() {
                 "c-section",
                 "laparoscopic-cholecystectomy",
                 "laparoscopic-hysterectomy",
-                "fracture-fixation",
+                "fracture-treatment",
                 "tonsillectomy",
               ];
               const keyTreatments = KEY_SLUGS
