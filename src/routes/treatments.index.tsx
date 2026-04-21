@@ -6,10 +6,10 @@ import { TREATMENTS, SPECIALITIES, SITE } from "@/lib/site";
 export const Route = createFileRoute("/treatments/")({
   head: () => ({
     meta: [
-      { title: "Treatments & Services — Bimla Devi Hospital | Affordable Surgery & Care in Delhi" },
-      { name: "description", content: "Full list of treatments at Bimla Devi Hospital — maternity, laparoscopic surgery, ICU, fracture care, ENT, urology, dental, dialysis & more. Cashless mediclaim accepted." },
-      { property: "og:title", content: "Treatments & Services at Bimla Devi Hospital, Delhi" },
-      { property: "og:description", content: "20+ treatments across 10 specialities — modern, affordable, with senior consultants and cashless insurance." },
+      { title: "Treatments & Services | Bimla Devi Hospital, Delhi" },
+      { name: "description", content: "Maternity, laparoscopic surgery, ICU, fracture care, ENT, urology, dental & dialysis at Bimla Devi Hospital, Delhi. Cashless mediclaim accepted." },
+      { property: "og:title", content: "Treatments & Services | Bimla Devi Hospital, Delhi" },
+      { property: "og:description", content: "20+ procedures across 10 specialities — modern, affordable, with cashless insurance support." },
       { property: "og:url", content: `${SITE.origin}/treatments` },
     ],
     links: [{ rel: "canonical", href: `${SITE.origin}/treatments` }],
