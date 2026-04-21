@@ -124,21 +124,31 @@ export const Route = createRootRoute({
       { title: "Bimla Devi Hospital — Affordable Multi-Speciality Hospital in Mayur Vihar, Delhi" },
       { name: "description", content: SITE.description },
       { name: "author", content: SITE.name },
+      { name: "robots", content: "index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" },
+      { name: "googlebot", content: "index, follow, max-image-preview:large" },
       { name: "theme-color", content: "#1e40af" },
+      // Geo / local SEO
+      { name: "geo.region", content: "IN-DL" },
+      { name: "geo.placename", content: "Mayur Vihar Phase II, Delhi" },
+      { name: "geo.position", content: "28.6094;77.3186" },
+      { name: "ICBM", content: "28.6094, 77.3186" },
+      // Open Graph
       { property: "og:site_name", content: SITE.name },
       { property: "og:type", content: "website" },
+      { property: "og:locale", content: "en_IN" },
       { property: "og:title", content: "Bimla Devi Hospital — Affordable Multi-Speciality Hospital in Mayur Vihar, Delhi" },
       { property: "og:description", content: SITE.description },
+      { property: "og:url", content: SITE.origin },
+      { property: "og:image", content: "https://pub-bb2e103a32db4e198524a2e9ed8f35b4.r2.dev/29bdbed8-bd01-49b4-88ce-26e96f21f448/id-preview-0948ab55--2f6686a9-457d-42db-ae92-40f2888be9da.lovable.app-1776746933676.png" },
+      // Twitter
       { name: "twitter:card", content: "summary_large_image" },
       { name: "twitter:title", content: "Bimla Devi Hospital — Affordable Multi-Speciality Hospital in Mayur Vihar, Delhi" },
-      { name: "description", content: "Bimla Devi Health Hub offers affordable, quality multi-speciality healthcare services with a focus on trust and accessibility." },
-      { property: "og:description", content: "Bimla Devi Health Hub offers affordable, quality multi-speciality healthcare services with a focus on trust and accessibility." },
-      { name: "twitter:description", content: "Bimla Devi Health Hub offers affordable, quality multi-speciality healthcare services with a focus on trust and accessibility." },
-      { property: "og:image", content: "https://pub-bb2e103a32db4e198524a2e9ed8f35b4.r2.dev/29bdbed8-bd01-49b4-88ce-26e96f21f448/id-preview-0948ab55--2f6686a9-457d-42db-ae92-40f2888be9da.lovable.app-1776746933676.png" },
+      { name: "twitter:description", content: SITE.description },
       { name: "twitter:image", content: "https://pub-bb2e103a32db4e198524a2e9ed8f35b4.r2.dev/29bdbed8-bd01-49b4-88ce-26e96f21f448/id-preview-0948ab55--2f6686a9-457d-42db-ae92-40f2888be9da.lovable.app-1776746933676.png" },
     ],
     links: [
       { rel: "stylesheet", href: appCss },
+      { rel: "canonical", href: SITE.origin },
       { rel: "preconnect", href: "https://fonts.googleapis.com" },
       { rel: "preconnect", href: "https://fonts.gstatic.com", crossOrigin: "anonymous" },
       {
@@ -150,6 +160,10 @@ export const Route = createRootRoute({
       {
         type: "application/ld+json",
         children: JSON.stringify(localBusinessSchema),
+      },
+      {
+        type: "application/ld+json",
+        children: JSON.stringify(websiteSchema),
       },
     ],
   }),
