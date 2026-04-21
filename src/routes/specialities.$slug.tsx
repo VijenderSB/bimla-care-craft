@@ -20,13 +20,16 @@ export const Route = createFileRoute("/specialities/$slug")({
       { q: "Is cashless mediclaim available?", a: "Yes, we are empanelled with all major TPAs and insurance companies for cashless treatment." },
       { q: "How do I book an appointment?", a: `Call ${SITE.phone}, send a WhatsApp message, or use our online appointment form.` },
     ];
+    const url = `${SITE.origin}/specialities/${s.slug}`;
     return {
       meta: [
         { title },
         { name: "description", content: desc },
         { property: "og:title", content: title },
         { property: "og:description", content: desc },
+        { property: "og:url", content: url },
       ],
+      links: [{ rel: "canonical", href: url }],
       scripts: [
         {
           type: "application/ld+json",
@@ -35,6 +38,20 @@ export const Route = createFileRoute("/specialities/$slug")({
             "@type": "MedicalSpecialty",
             name: s.name,
             description: s.description,
+            url,
+            providedBy: { "@type": "Hospital", name: "Bimla Devi Hospital", url: SITE.origin },
+          }),
+        },
+        {
+          type: "application/ld+json",
+          children: JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "BreadcrumbList",
+            itemListElement: [
+              { "@type": "ListItem", position: 1, name: "Home", item: SITE.origin },
+              { "@type": "ListItem", position: 2, name: "Specialities", item: `${SITE.origin}/specialities` },
+              { "@type": "ListItem", position: 3, name: s.name, item: url },
+            ],
           }),
         },
         {

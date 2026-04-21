@@ -10,7 +10,9 @@ export const Route = createFileRoute("/cashless")({
       { name: "description", content: "Cashless hospital near Mayur Vihar — empanelled with Star Health, HDFC ERGO, ICICI Lombard, Care Health, MediAssist, FHPL, Vidal, Paramount, ECHS, CGHS and more." },
       { property: "og:title", content: "Cashless Mediclaim — Bimla Devi Hospital, Delhi" },
       { property: "og:description", content: "Get treated without paying upfront. Empanelled with all major TPAs and insurers." },
+      { property: "og:url", content: `${SITE.origin}/cashless` },
     ],
+    links: [{ rel: "canonical", href: `${SITE.origin}/cashless` }],
   }),
   component: CashlessPage,
 });
