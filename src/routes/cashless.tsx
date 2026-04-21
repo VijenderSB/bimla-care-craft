@@ -6,9 +6,9 @@ import { INSURERS, SITE } from "@/lib/site";
 export const Route = createFileRoute("/cashless")({
   head: () => ({
     meta: [
-      { title: "Cashless Mediclaim Hospital in Delhi — Bimla Devi Hospital" },
-      { name: "description", content: "Cashless hospital near Mayur Vihar — empanelled with Star Health, HDFC ERGO, ICICI Lombard, Care Health, MediAssist, FHPL, Vidal, Paramount, ECHS, CGHS and more." },
-      { property: "og:title", content: "Cashless Mediclaim — Bimla Devi Hospital, Delhi" },
+      { title: "Cashless Mediclaim Hospital, Delhi | Bimla Devi Hospital" },
+      { name: "description", content: "Cashless hospital near Mayur Vihar — empanelled with Star Health, HDFC ERGO, ICICI Lombard, Care, MediAssist, FHPL, Vidal, Paramount, ECHS & CGHS." },
+      { property: "og:title", content: "Cashless Mediclaim Hospital, Delhi | Bimla Devi Hospital" },
       { property: "og:description", content: "Get treated without paying upfront. Empanelled with all major TPAs and insurers." },
       { property: "og:url", content: `${SITE.origin}/cashless` },
     ],

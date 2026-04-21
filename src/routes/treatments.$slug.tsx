@@ -30,8 +30,8 @@ export const Route = createFileRoute("/treatments/$slug")({
   head: ({ loaderData }) => {
     const t = loaderData?.treatment;
     if (!t) return { meta: [{ title: "Treatment not found — Bimla Devi Hospital" }] };
-    const title = `${t.name} in Delhi — Cost, Recovery & Care | Bimla Devi Hospital`;
-    const desc = `${t.name} at Bimla Devi Hospital, Mayur Vihar, Delhi — ${t.short} Cashless mediclaim accepted. Speak to our team today.`;
+    const title = `${t.name} in Delhi | Bimla Devi Hospital`.slice(0, 60);
+    const desc = `${t.name} at Bimla Devi Hospital, Mayur Vihar, Delhi. ${t.short} Cashless mediclaim accepted.`.slice(0, 158);
     const url = `${SITE.origin}/treatments/${t.slug}`;
     const procedureSchema = {
       "@context": "https://schema.org",

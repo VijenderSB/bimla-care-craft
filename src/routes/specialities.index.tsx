@@ -6,10 +6,10 @@ import { SPECIALITIES } from "@/lib/site";
 export const Route = createFileRoute("/specialities/")({
   head: () => ({
     meta: [
-      { title: "Specialities — Bimla Devi Hospital | Multi-Speciality Hospital in Delhi" },
-      { name: "description", content: "Explore all medical specialities at Bimla Devi Hospital — gynaecology, paediatrics, surgery, orthopaedics, ENT, nephrology, urology, psychiatry, dental and more." },
-      { property: "og:title", content: "All Specialities at Bimla Devi Hospital, Delhi" },
-      { property: "og:description", content: "Comprehensive multi-speciality care under one roof." },
+      { title: "Medical Specialities | Bimla Devi Hospital, Delhi" },
+      { name: "description", content: "Explore all specialities at Bimla Devi Hospital — gynaecology, paediatrics, surgery, orthopaedics, ENT, nephrology, urology, psychiatry & dental." },
+      { property: "og:title", content: "Medical Specialities | Bimla Devi Hospital, Delhi" },
+      { property: "og:description", content: "Comprehensive multi-speciality care under one roof in Mayur Vihar, Delhi." },
       { property: "og:url", content: "https://bimladevi.hospital/specialities" },
     ],
     links: [{ rel: "canonical", href: "https://bimladevi.hospital/specialities" }],

@@ -7,10 +7,10 @@ import { SITE } from "@/lib/site";
 export const Route = createFileRoute("/emergency")({
   head: () => ({
     meta: [
-      { title: "24×7 Emergency Hospital in Delhi — Bimla Devi Hospital, Mayur Vihar" },
-      { name: "description", content: "Best emergency hospital near Mayur Vihar — 24×7 emergency room, ICU, modular OT, trauma care and ambulance support. Call 011 4188 7777 immediately." },
-      { property: "og:title", content: "24×7 Emergency & ICU — Bimla Devi Hospital, Delhi" },
-      { property: "og:description", content: "Round-the-clock doctor-led emergency room with ICU & OT on the same campus." },
+      { title: "24×7 Emergency Hospital, Mayur Vihar | Bimla Devi" },
+      { name: "description", content: "24×7 emergency room, ICU, modular OT, trauma care & ambulance at Bimla Devi Hospital, Mayur Vihar, Delhi. Call 011 4188 7777 immediately." },
+      { property: "og:title", content: "24×7 Emergency Hospital, Mayur Vihar | Bimla Devi" },
+      { property: "og:description", content: "Round-the-clock doctor-led emergency room with ICU & OT on the same campus in Mayur Vihar, Delhi." },
       { property: "og:image", content: emergencyImg },
       { property: "og:url", content: `${SITE.origin}/emergency` },
       { name: "twitter:image", content: emergencyImg },

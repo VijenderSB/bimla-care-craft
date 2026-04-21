@@ -7,10 +7,10 @@ import { DOCTORS } from "@/lib/site";
 export const Route = createFileRoute("/doctors/")({
   head: () => ({
     meta: [
-      { title: "Our Doctors — Bimla Devi Hospital | Senior Consultants in Delhi" },
-      { name: "description", content: "Meet our senior consultants in gynaecology, paediatrics, surgery, orthopaedics, ENT, nephrology, urology, psychiatry and more. Book your appointment today." },
-      { property: "og:title", content: "Doctors at Bimla Devi Hospital, Delhi" },
-      { property: "og:description", content: "Senior consultants across all major specialities — book online or call." },
+      { title: "Our Doctors | Bimla Devi Hospital, Delhi" },
+      { name: "description", content: "Meet our senior consultants in gynaecology, paediatrics, surgery, orthopaedics, ENT, nephrology, urology & psychiatry. Book an appointment online." },
+      { property: "og:title", content: "Our Doctors | Bimla Devi Hospital, Delhi" },
+      { property: "og:description", content: "Senior consultants across all major specialities at Bimla Devi Hospital — book online or call." },
       { property: "og:url", content: "https://bimladevi.hospital/doctors" },
     ],
     links: [{ rel: "canonical", href: "https://bimladevi.hospital/doctors" }],

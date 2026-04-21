@@ -8,10 +8,10 @@ import { STATS } from "@/lib/site";
 export const Route = createFileRoute("/about")({
   head: () => ({
     meta: [
-      { title: "About Bimla Devi Hospital — Legacy of Affordable, Compassionate Care in Delhi" },
-      { name: "description", content: "Founded by Dr. Ashok Kumar Walia, Bimla Devi Hospital has served East Delhi families with affordable, compassionate, multi-speciality care for decades. Read our story." },
-      { property: "og:title", content: "About Bimla Devi Hospital — Our Story & Mission" },
-      { property: "og:description", content: "A legacy of compassionate, affordable healthcare for East Delhi families." },
+      { title: "About Us | Bimla Devi Hospital, Delhi" },
+      { name: "description", content: "Founded by Dr. Ashok Kumar Walia, Bimla Devi Hospital has served East Delhi families with compassionate, affordable multi-speciality care for decades." },
+      { property: "og:title", content: "About Us | Bimla Devi Hospital, Delhi" },
+      { property: "og:description", content: "A legacy of compassionate, affordable healthcare for East Delhi families since the 1980s." },
       { property: "og:url", content: "https://bimladevi.hospital/about" },
     ],
     links: [{ rel: "canonical", href: "https://bimladevi.hospital/about" }],

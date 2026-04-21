@@ -7,10 +7,10 @@ import { SITE, SPECIALITIES } from "@/lib/site";
 export const Route = createFileRoute("/contact")({
   head: () => ({
     meta: [
-      { title: "Contact & Book Appointment — Bimla Devi Hospital, Mayur Vihar Delhi" },
-      { name: "description", content: "Book an appointment with Bimla Devi Hospital. Call 011 4188 7777 or send a request — our care team will confirm your slot quickly." },
-      { property: "og:title", content: "Contact Bimla Devi Hospital, Delhi" },
-      { property: "og:description", content: "Book an appointment, request a callback or visit us in Mayur Vihar Phase II." },
+      { title: "Contact & Book Appointment | Bimla Devi Hospital" },
+      { name: "description", content: "Book an appointment at Bimla Devi Hospital, Mayur Vihar Delhi. Call 011 4188 7777 or send a request — our care team will confirm your slot quickly." },
+      { property: "og:title", content: "Contact & Book Appointment | Bimla Devi Hospital" },
+      { property: "og:description", content: "Book an appointment, request a callback or visit us in Mayur Vihar Phase II, Delhi." },
       { property: "og:url", content: `${SITE.origin}/contact` },
     ],
     links: [{ rel: "canonical", href: `${SITE.origin}/contact` }],
