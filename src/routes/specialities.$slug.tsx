@@ -13,8 +13,8 @@ export const Route = createFileRoute("/specialities/$slug")({
   head: ({ loaderData }) => {
     const s = loaderData?.speciality;
     if (!s) return { meta: [{ title: "Speciality not found — Bimla Devi Hospital" }] };
-    const title = `Best ${s.name} Hospital in Mayur Vihar, Delhi | Bimla Devi Hospital`;
-    const desc = `${s.name} at Bimla Devi Hospital — ${s.short} Affordable, cashless mediclaim accepted. Senior consultants, modern infrastructure, 24×7 support.`;
+    const title = `${s.name} in Delhi | Bimla Devi Hospital`;
+    const desc = `${s.name} at Bimla Devi Hospital, Mayur Vihar, Delhi. ${s.short} Cashless mediclaim accepted. Senior consultants, modern infrastructure.`.slice(0, 158);
     const faqs = [
       { q: `Do you have experienced doctors for ${s.name.toLowerCase()}?`, a: `Yes — Bimla Devi Hospital has senior consultants in ${s.name.toLowerCase()} with years of clinical experience.` },
       { q: "Is cashless mediclaim available?", a: "Yes, we are empanelled with all major TPAs and insurance companies for cashless treatment." },

@@ -12,8 +12,8 @@ export const Route = createFileRoute("/doctors/$slug")({
   head: ({ loaderData }) => {
     const d = loaderData?.doctor;
     if (!d) return { meta: [{ title: "Doctor not found — Bimla Devi Hospital" }] };
-    const title = `${d.name} — ${d.designation} | Bimla Devi Hospital, Delhi`;
-    const desc = `${d.name} (${d.qualification}), ${d.designation} at Bimla Devi Hospital, Mayur Vihar, Delhi. ${d.experience} experience in ${d.speciality}. Book an appointment.`;
+    const title = `${d.name} | ${d.speciality.split(" ")[0]} | Bimla Devi Hospital`.slice(0, 60);
+    const desc = `${d.name} (${d.qualification}), ${d.designation} at Bimla Devi Hospital, Delhi. ${d.experience} in ${d.speciality}. Book an appointment.`.slice(0, 158);
     const url = `${SITE.origin}/doctors/${d.slug}`;
     return {
       meta: [
