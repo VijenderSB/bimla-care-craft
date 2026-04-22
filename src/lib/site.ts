@@ -1125,7 +1125,7 @@ export const DOCTORS: Doctor[] = [
     designation: "Director & Medical Superintendent",
     speciality: "Psychiatry & Hospital Administration",
     experience: "25+ years",
-    bio: "As Director and Medical Superintendent, Dr. Manish leads clinical governance, patient safety and the day-to-day medical leadership of Bimla Devi Hospital — with a clinical background in psychiatry.",
+    bio: "As Director and Medical Superintendent, Dr. Manish S Kansal leads the clinical governance, patient safety systems and day-to-day medical leadership of Bimla Devi Hospital. With a background in psychiatry and hospital administration, he guides the team with a patient-first approach, strengthening ethical care, transparent processes and affordable healthcare access for the community.",
     treatments: ["Psychiatric consultation", "Hospital leadership"],
     image: drManish,
   },

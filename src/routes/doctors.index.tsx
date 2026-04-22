@@ -76,7 +76,10 @@ function DoctorsPage() {
                 <p className="mt-2 text-base font-semibold text-primary">{featuredDoctor.designation}</p>
                 <p className="mt-1 text-sm text-muted-foreground">{featuredDoctor.experience} • {featuredDoctor.speciality}</p>
                 <p className="mt-4 max-w-2xl text-sm leading-relaxed text-muted-foreground">
-                  He is Director & Medical Superintendent of Bimla Devi Hospital, leading hospital operations with a focus on safe, ethical and affordable healthcare for the community.
+                  As Director & Medical Superintendent, Dr. Manish S Kansal oversees the daily functioning, clinical standards and patient-care systems of Bimla Devi Hospital. His leadership focuses on running the hospital with discipline, compassion and transparency while keeping quality healthcare affordable for families in East Delhi.
+                </p>
+                <p className="mt-3 max-w-2xl text-sm leading-relaxed text-muted-foreground">
+                  With 25+ years of experience and a clinical background in psychiatry, he works closely with doctors, nursing teams and hospital staff to carry forward the founder’s vision of ethical, accessible and community-centred medical care.
                 </p>
                 <div className="mt-5 flex flex-wrap gap-2">
                   <Link to="/doctors/$slug" params={{ slug: featuredDoctor.slug }} className="rounded-lg border border-border px-4 py-2 text-sm font-semibold text-foreground hover:border-primary hover:text-primary">
