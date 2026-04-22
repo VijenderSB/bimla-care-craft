@@ -46,7 +46,7 @@ function DoctorsPage() {
   const filtered = DOCTORS.filter((d) => {
     const match = (d.name + " " + d.speciality + " " + d.designation).toLowerCase().includes(q.toLowerCase());
     const inSpec = spec === "all" || d.speciality === spec;
-    return match && inSpec;
+    return Boolean(d.image) && match && inSpec;
   });
 
   return (
