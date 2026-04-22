@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { Link } from "@tanstack/react-router";
-import { Phone, Menu, X, MessageCircle, Calendar } from "lucide-react";
-import { SITE } from "@/lib/site";
+import { Phone, Menu, X, MessageCircle, Calendar, ChevronDown } from "lucide-react";
+import { SITE, SPECIALITIES } from "@/lib/site";
 import logo from "@/assets/logo-bdh.png";
 
 const NAV = [
@@ -46,7 +46,29 @@ export function SiteHeader() {
         </Link>
 
         <nav className="hidden lg:flex items-center gap-1">
-          {NAV.map((n) => (
+          {NAV.map((n) => n.to === "/specialities" ? (
+            <div key={n.to} className="group relative">
+              <Link
+                to="/specialities"
+                className="inline-flex items-center gap-1 rounded-md px-3 py-2 text-sm font-medium text-foreground/80 transition-colors hover:bg-primary-soft hover:text-primary"
+                activeProps={{ className: "inline-flex items-center gap-1 rounded-md px-3 py-2 text-sm font-semibold text-primary bg-primary-soft" }}
+              >
+                Specialities <ChevronDown className="h-3.5 w-3.5 transition-transform group-hover:rotate-180" />
+              </Link>
+              <div className="invisible absolute left-0 top-full z-50 w-72 translate-y-2 rounded-lg border border-border bg-popover p-2 text-popover-foreground opacity-0 shadow-card transition-all group-hover:visible group-hover:translate-y-0 group-hover:opacity-100">
+                {SPECIALITIES.map((speciality) => (
+                  <Link
+                    key={speciality.slug}
+                    to="/specialities/$slug"
+                    params={{ slug: speciality.slug }}
+                    className="block rounded-md px-3 py-2 text-sm font-medium text-foreground hover:bg-primary-soft hover:text-primary"
+                  >
+                    {speciality.name}
+                  </Link>
+                ))}
+              </div>
+            </div>
+          ) : (
             <Link
               key={n.to}
               to={n.to}
@@ -80,7 +102,31 @@ export function SiteHeader() {
       {open && (
         <div className="lg:hidden border-t border-border bg-background">
           <nav className="container-prose flex flex-col py-3">
-            {NAV.map((n) => (
+            {NAV.map((n) => n.to === "/specialities" ? (
+              <div key={n.to} className="py-1">
+                <Link
+                  to="/specialities"
+                  onClick={() => setOpen(false)}
+                  className="block rounded-md px-3 py-3 text-base font-semibold text-foreground hover:bg-primary-soft hover:text-primary"
+                  activeProps={{ className: "block rounded-md px-3 py-3 text-base font-semibold text-primary bg-primary-soft" }}
+                >
+                  Specialities
+                </Link>
+                <div className="ml-3 border-l border-border pl-2">
+                  {SPECIALITIES.map((speciality) => (
+                    <Link
+                      key={speciality.slug}
+                      to="/specialities/$slug"
+                      params={{ slug: speciality.slug }}
+                      onClick={() => setOpen(false)}
+                      className="block rounded-md px-3 py-2 text-sm font-medium text-muted-foreground hover:bg-primary-soft hover:text-primary"
+                    >
+                      {speciality.name}
+                    </Link>
+                  ))}
+                </div>
+              </div>
+            ) : (
               <Link
                 key={n.to}
                 to={n.to}
