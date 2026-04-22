@@ -1,6 +1,7 @@
 import { Outlet, Link, createRootRoute, HeadContent, Scripts } from "@tanstack/react-router";
 
 import appCss from "../styles.css?url";
+import faviconUrl from "@/assets/favicon.png?url";
 import { SiteHeader } from "@/components/SiteHeader";
 import { SiteFooter } from "@/components/SiteFooter";
 import { FloatingActions } from "@/components/FloatingActions";
@@ -17,7 +18,7 @@ const localBusinessSchema = {
   name: SITE.name,
   alternateName: "Bimla Devi Health Hub",
   url: SITE.origin,
-  logo: `${SITE.origin}/favicon.ico`,
+  logo: `${SITE.origin}${faviconUrl}`,
   image: "https://pub-bb2e103a32db4e198524a2e9ed8f35b4.r2.dev/29bdbed8-bd01-49b4-88ce-26e96f21f448/id-preview-0948ab55--2f6686a9-457d-42db-ae92-40f2888be9da.lovable.app-1776746933676.png",
   telephone: `+91-${SITE.phoneTel}`,
   email: SITE.email,
@@ -148,8 +149,8 @@ export const Route = createRootRoute({
     ],
     links: [
       { rel: "stylesheet", href: appCss },
-      { rel: "icon", type: "image/png", href: "/favicon.png" },
-      { rel: "apple-touch-icon", href: "/favicon.png" },
+      { rel: "icon", type: "image/png", href: faviconUrl },
+      { rel: "apple-touch-icon", href: faviconUrl },
       { rel: "canonical", href: SITE.origin },
       { rel: "preconnect", href: "https://fonts.googleapis.com" },
       { rel: "preconnect", href: "https://fonts.gstatic.com", crossOrigin: "anonymous" },
