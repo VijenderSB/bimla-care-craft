@@ -1063,12 +1063,15 @@ export type Doctor = {
   image?: string;
 };
 
-import drJasjot from "@/assets/doctor-jasjot.jpg";
-import drPalak from "@/assets/doctor-palak.jpg";
-import drPriyanka from "@/assets/doctor-priyanka.jpg";
-import drSanjeev from "@/assets/doctor-sanjeev.jpg";
-import drMeera from "@/assets/doctor-meera.jpg";
-import drManish from "@/assets/doctor-manish.jpg";
+import drJasjot from "@/assets/doctor-jasjot.avif";
+import drPalak from "@/assets/doctor-palak.avif";
+import drPriyanka from "@/assets/doctor-priyanka.avif";
+import drSanjeev from "@/assets/doctor-sanjeev.avif";
+import drRanju from "@/assets/doctor-ranju.avif";
+import drSeema from "@/assets/doctor-seema.avif";
+import drMeera from "@/assets/doctor-meera.avif";
+import drMadhavi from "@/assets/doctor-madhavi.avif";
+import drManish from "@/assets/doctor-manish.avif";
 
 export const DOCTORS: Doctor[] = [
   {
@@ -1146,6 +1149,7 @@ export const DOCTORS: Doctor[] = [
     experience: "18 years",
     bio: "A dedicated professional, utterly passionate about her work and always ready to serve patients with attentive, compassionate care.",
     treatments: ["Normal Delivery", "Gynaec surgery"],
+    image: drRanju,
   },
   {
     slug: "dr-seema-sinha",
@@ -1156,6 +1160,7 @@ export const DOCTORS: Doctor[] = [
     experience: "27 years",
     bio: "27 years of experience — undergraduate and postgraduate from the Institute of Medical Sciences, BHU; trained as resident at GTB Hospital, Delhi.",
     treatments: ["Diabetes", "Hypertension", "General medicine"],
+    image: drSeema,
   },
   {
     slug: "dr-j-madhavi",
@@ -1166,6 +1171,7 @@ export const DOCTORS: Doctor[] = [
     experience: "15+ years",
     bio: "Consultant in obstetrics, gynaecology and laparoscopic gynaec surgery — combining clinical depth with minimally invasive surgical expertise.",
     treatments: ["Laparoscopic gynaec surgery", "Obstetrics"],
+    image: drMadhavi,
   },
   {
     slug: "dr-shalu-wadhawan",
