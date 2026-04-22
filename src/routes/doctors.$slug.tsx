@@ -1,11 +1,11 @@
 import { createFileRoute, Link, notFound } from "@tanstack/react-router";
-import { Calendar, GraduationCap, Stethoscope, BadgeCheck, Phone, Users } from "lucide-react";
+import { Calendar, GraduationCap, Stethoscope, BadgeCheck, Phone } from "lucide-react";
 import { PageHero } from "@/components/PageHero";
 import { DOCTORS, SITE } from "@/lib/site";
 
 export const Route = createFileRoute("/doctors/$slug")({
   loader: ({ params }) => {
-    const doctor = DOCTORS.find((d) => d.slug === params.slug);
+    const doctor = DOCTORS.find((d) => d.slug === params.slug && d.image);
     if (!doctor) throw notFound();
     return { doctor };
   },
@@ -94,11 +94,7 @@ function DoctorPage() {
         <div className="container-prose grid gap-10 lg:grid-cols-[1fr_2fr] lg:items-start">
           <div>
             <div className="overflow-hidden rounded-2xl border border-border bg-primary-soft shadow-card">
-              {doctor.image ? (
-                <img src={doctor.image} alt={doctor.name} loading="lazy" width={768} height={896} className="w-full object-cover" />
-              ) : (
-                <div className="aspect-[4/5] grid place-items-center text-primary"><Users className="h-20 w-20" /></div>
-              )}
+              <img src={doctor.image} alt={doctor.name} loading="lazy" width={768} height={896} className="w-full object-cover" />
             </div>
 
             <div className="mt-5 space-y-3">
