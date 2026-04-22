@@ -21,7 +21,7 @@ export function SiteHeader() {
   return (
     <header className="sticky top-0 z-40 w-full border-b border-border bg-background/90 backdrop-blur supports-[backdrop-filter]:bg-background/70">
       {/* Top utility bar */}
-      <div className="hidden md:block bg-primary text-primary-foreground text-sm">
+      <div className="hidden lg:block bg-primary text-primary-foreground text-sm">
         <div className="container-prose flex items-center justify-between py-2">
           <div className="flex items-center gap-6 opacity-95">
             <span>📍 Mayur Vihar Phase II, Delhi 110091</span>
