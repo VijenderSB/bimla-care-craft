@@ -5,6 +5,7 @@ import { PageHero } from "@/components/PageHero";
 import { DOCTORS } from "@/lib/site";
 
 const SHOWCASE_DOCTORS = DOCTORS.filter((doctor) => Boolean(doctor.image));
+const FEATURED_DOCTOR_SLUG = "dr-manish-s-kansal";
 
 export const Route = createFileRoute("/doctors/")({
   head: () => ({
@@ -39,6 +40,7 @@ export const Route = createFileRoute("/doctors/")({
 function DoctorsPage() {
   const [q, setQ] = useState("");
   const [spec, setSpec] = useState<string>("all");
+  const featuredDoctor = SHOWCASE_DOCTORS.find((doctor) => doctor.slug === FEATURED_DOCTOR_SLUG);
 
   const specialities = useMemo(
     () => Array.from(new Set(SHOWCASE_DOCTORS.map((d) => d.speciality))).sort(),
@@ -59,6 +61,36 @@ function DoctorsPage() {
         description="Decades of combined experience across every major speciality — backed by modern infrastructure and 24×7 emergency support."
         crumbs={[{ label: "Doctors" }]}
       />
+
+      {featuredDoctor && (
+        <section className="py-10">
+          <div className="container-prose">
+            <article className="grid overflow-hidden rounded-2xl border border-border bg-card shadow-card md:grid-cols-[260px_1fr]">
+              <div className="aspect-[4/3] overflow-hidden bg-primary-soft md:aspect-auto">
+                <img src={featuredDoctor.image} alt={featuredDoctor.name} loading="eager" width={768} height={896} className="h-full w-full object-cover object-top" />
+              </div>
+              <div className="p-6 md:p-8">
+                <p className="text-sm font-semibold uppercase tracking-wider text-primary">Leadership Profile</p>
+                <h2 className="mt-2 font-display text-2xl font-bold text-foreground md:text-3xl">{featuredDoctor.name}</h2>
+                <p className="mt-1 text-sm text-muted-foreground">{featuredDoctor.qualification}</p>
+                <p className="mt-2 text-base font-semibold text-primary">{featuredDoctor.designation}</p>
+                <p className="mt-1 text-sm text-muted-foreground">{featuredDoctor.experience} • {featuredDoctor.speciality}</p>
+                <p className="mt-4 max-w-2xl text-sm leading-relaxed text-muted-foreground">
+                  He is Director & Medical Superintendent of Bimla Devi Hospital, leading hospital operations with a focus on safe, ethical and affordable healthcare for the community.
+                </p>
+                <div className="mt-5 flex flex-wrap gap-2">
+                  <Link to="/doctors/$slug" params={{ slug: featuredDoctor.slug }} className="rounded-lg border border-border px-4 py-2 text-sm font-semibold text-foreground hover:border-primary hover:text-primary">
+                    View profile
+                  </Link>
+                  <Link to="/contact" className="inline-flex items-center justify-center gap-1 rounded-lg bg-primary px-4 py-2 text-sm font-semibold text-primary-foreground hover:opacity-95">
+                    <Calendar className="h-4 w-4" /> Book Appointment
+                  </Link>
+                </div>
+              </div>
+            </article>
+          </div>
+        </section>
+      )}
 
       <section className="py-10">
         <div className="container-prose">

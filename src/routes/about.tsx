@@ -3,7 +3,7 @@ import { Award, HeartHandshake, Sparkles, Users } from "lucide-react";
 import founderImg from "@/assets/founder-walia.jpg";
 import { PageHero } from "@/components/PageHero";
 import { CTAButtons } from "@/components/CTAButtons";
-import { STATS } from "@/lib/site";
+import { DOCTORS, STATS } from "@/lib/site";
 
 export const Route = createFileRoute("/about")({
   head: () => ({
@@ -37,6 +37,8 @@ export const Route = createFileRoute("/about")({
 });
 
 function AboutPage() {
+  const medicalSuperintendent = DOCTORS.find((doctor) => doctor.slug === "dr-manish-s-kansal");
+
   return (
     <div>
       <PageHero
@@ -57,6 +59,19 @@ function AboutPage() {
               <p className="font-display font-semibold text-primary">Dr. Ashok Kumar Walia</p>
               <p className="text-muted-foreground">Founder · 08 December 1948 — 22 April 2021</p>
             </div>
+            {medicalSuperintendent && (
+              <div className="flex gap-4 rounded-xl border border-border bg-card p-4 shadow-soft">
+                <img src={medicalSuperintendent.image} alt={medicalSuperintendent.name} loading="lazy" width={120} height={140} className="h-24 w-20 shrink-0 rounded-lg object-cover object-top" />
+                <div className="min-w-0 text-sm">
+                  <p className="font-display font-semibold text-foreground">{medicalSuperintendent.name}</p>
+                  <p className="mt-0.5 text-xs text-muted-foreground">{medicalSuperintendent.qualification}</p>
+                  <p className="mt-1 text-xs font-semibold text-primary">{medicalSuperintendent.designation}</p>
+                  <p className="mt-2 text-xs leading-relaxed text-muted-foreground">
+                    Carrying forward Dr. Walia’s vision by running Bimla Devi Hospital for society with affordable healthcare.
+                  </p>
+                </div>
+              </div>
+            )}
           </div>
 
           <div>
