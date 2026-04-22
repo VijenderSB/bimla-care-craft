@@ -81,6 +81,8 @@ export const Route = createFileRoute("/doctors/$slug")({
 
 function DoctorPage() {
   const { doctor } = Route.useLoaderData();
+  const isManishKansal = doctor.slug === "dr-manish-s-kansal";
+
   return (
     <div>
       <PageHero
@@ -127,6 +129,31 @@ function DoctorPage() {
                 ))}
               </ul>
             </Block>
+            {isManishKansal && (
+              <div className="grid gap-4 md:grid-cols-3">
+                <Block icon={BadgeCheck} title="Special Interest">
+                  <ul className="space-y-2 text-muted-foreground">
+                    <li>Hospital administration and clinical governance</li>
+                    <li>Psychiatry-led patient communication and counselling</li>
+                    <li>Community-focused affordable healthcare delivery</li>
+                  </ul>
+                </Block>
+                <Block icon={Stethoscope} title="Leadership Focus">
+                  <ul className="space-y-2 text-muted-foreground">
+                    <li>Safe, ethical and transparent hospital operations</li>
+                    <li>Coordinated care between doctors, nurses and staff</li>
+                    <li>Continuous improvement in patient safety systems</li>
+                  </ul>
+                </Block>
+                <Block icon={BadgeCheck} title="Patient Care Philosophy">
+                  <ul className="space-y-2 text-muted-foreground">
+                    <li>Respectful care for every patient and family</li>
+                    <li>Clear guidance before treatment and admission</li>
+                    <li>Quality medical care kept accessible and affordable</li>
+                  </ul>
+                </Block>
+              </div>
+            )}
           </div>
         </div>
       </section>
