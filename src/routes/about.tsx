@@ -67,7 +67,7 @@ function AboutPage() {
                   <p className="mt-0.5 text-xs text-muted-foreground">{medicalSuperintendent.qualification}</p>
                   <p className="mt-1 text-xs font-semibold text-primary">{medicalSuperintendent.designation}</p>
                   <p className="mt-2 text-xs leading-relaxed text-muted-foreground">
-                    Carrying forward Dr. Walia’s vision by running Bimla Devi Hospital for society with affordable healthcare.
+                    Carrying forward Dr. Walia’s vision, he leads Bimla Devi Hospital with a focus on ethical operations, patient safety and affordable healthcare for society.
                   </p>
                 </div>
               </div>
