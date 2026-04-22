@@ -57,7 +57,10 @@ const ICONS: Record<string, React.ComponentType<{ className?: string }>> = {
 };
 
 function HomePage() {
-  const featuredDoctors = DOCTORS.slice(0, 4);
+  const featuredDoctors = [
+    ...DOCTORS.filter((doctor) => doctor.slug === "dr-manish-s-kansal"),
+    ...DOCTORS.filter((doctor) => doctor.slug !== "dr-manish-s-kansal"),
+  ].slice(0, 4);
 
   return (
     <div>
