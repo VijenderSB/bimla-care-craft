@@ -41,7 +41,7 @@ export function SiteHeader() {
           <img
             src={logo}
             alt="Bimla Devi Hospital logo"
-            className="h-16 w-auto md:h-20"
+            className="h-14 w-auto object-contain md:h-16"
           />
         </Link>
 

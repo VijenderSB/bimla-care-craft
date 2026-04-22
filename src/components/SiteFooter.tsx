@@ -8,8 +8,8 @@ export function SiteFooter() {
     <footer className="mt-20 bg-primary text-primary-foreground">
       <div className="container-prose grid gap-10 py-14 md:grid-cols-4">
         <div>
-          <div className="rounded-xl bg-primary-foreground p-3 inline-block">
-            <img src={logo} alt="Bimla Devi Hospital logo" className="h-20 w-auto object-contain" />
+          <div className="inline-block rounded-xl bg-primary-foreground p-3">
+            <img src={logo} alt="Bimla Devi Hospital logo" className="h-24 w-auto object-contain" />
           </div>
           <p className="mt-4 text-sm leading-relaxed opacity-90">
             Affordable, trusted, multi-speciality care for every family — backed by experienced
