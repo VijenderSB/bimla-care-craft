@@ -12,7 +12,7 @@ export function SiteFooter() {
             <img src={logo} alt="Bimla Devi Hospital logo" className="h-24 w-auto object-contain" />
           </div>
           <p className="mt-4 text-sm leading-relaxed opacity-90">
-            Affordable, trusted, multi-speciality care for every family — backed by experienced
+            Bimla Devi Hospital, Affordable, trusted, multi-speciality care for every family — backed by experienced
             doctors, modern infrastructure and 24×7 emergency services.
           </p>
         </div>
