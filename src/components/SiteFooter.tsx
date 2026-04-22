@@ -6,7 +6,7 @@ import logo from "@/assets/logo-bdh.png";
 export function SiteFooter() {
   return (
     <footer className="mt-20 bg-primary text-primary-foreground">
-      <div className="container-prose grid gap-10 py-14 md:grid-cols-4">
+      <div className="container-prose grid gap-10 py-14 md:grid-cols-2 xl:grid-cols-4">
         <div>
           <div className="inline-block rounded-xl bg-primary-foreground p-3">
             <img src={logo} alt="Bimla Devi Hospital logo" className="h-24 w-auto object-contain" />
@@ -55,7 +55,7 @@ export function SiteFooter() {
             </li>
             <li className="flex items-center gap-2">
               <Mail className="h-4 w-4" />
-              <a href={`mailto:${SITE.email}`} className="hover:underline">{SITE.email}</a>
+              <a href={`mailto:${SITE.email}`} className="break-all hover:underline">{SITE.email}</a>
             </li>
             <li className="flex items-start gap-2">
               <Clock className="mt-0.5 h-4 w-4 shrink-0" />
@@ -65,7 +65,7 @@ export function SiteFooter() {
         </div>
       </div>
       <div className="border-t border-primary-foreground/15">
-        <div className="container-prose flex flex-col items-center justify-between gap-2 py-5 text-xs opacity-80 md:flex-row">
+        <div className="container-prose flex flex-col items-center justify-between gap-2 py-5 text-center text-xs opacity-80 md:flex-row md:text-left">
           <p>© {new Date().getFullYear()} Bimla Devi Hospital. All rights reserved.</p>
           <p>Empanelled with leading TPAs & insurers • Cashless mediclaim available</p>
         </div>
