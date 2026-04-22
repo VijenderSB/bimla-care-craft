@@ -4,6 +4,8 @@ import { Search, Users, Calendar } from "lucide-react";
 import { PageHero } from "@/components/PageHero";
 import { DOCTORS } from "@/lib/site";
 
+const SHOWCASE_DOCTORS = DOCTORS.filter((doctor) => Boolean(doctor.image));
+
 export const Route = createFileRoute("/doctors/")({
   head: () => ({
     meta: [
@@ -21,7 +23,7 @@ export const Route = createFileRoute("/doctors/")({
           "@context": "https://schema.org",
           "@type": "ItemList",
           name: "Doctors at Bimla Devi Hospital",
-          itemListElement: DOCTORS.map((d, i) => ({
+          itemListElement: SHOWCASE_DOCTORS.map((d, i) => ({
             "@type": "ListItem",
             position: i + 1,
             url: `https://bimladevi.hospital/doctors/${d.slug}`,
@@ -39,11 +41,11 @@ function DoctorsPage() {
   const [spec, setSpec] = useState<string>("all");
 
   const specialities = useMemo(
-    () => Array.from(new Set(DOCTORS.map((d) => d.speciality))).sort(),
+    () => Array.from(new Set(SHOWCASE_DOCTORS.map((d) => d.speciality))).sort(),
     [],
   );
 
-  const filtered = DOCTORS.filter((d) => {
+  const filtered = SHOWCASE_DOCTORS.filter((d) => {
     const match = (d.name + " " + d.speciality + " " + d.designation).toLowerCase().includes(q.toLowerCase());
     const inSpec = spec === "all" || d.speciality === spec;
     return match && inSpec;
